@@ -1,0 +1,48 @@
+changePassword:
+  code:
+    duration: 30000
+logging:
+  file:
+    name: logs/application.log
+    path: logs/
+  level:
+    root: WARN
+    web: TRACE
+namast:
+  openapi:
+    dev-url: http://localhost:8080
+    prod-url: https://namast-api.com
+security:
+  jwt:
+    expiration-time: 3600000
+    secret-key: 3cfa76ef14937c1c0ea519f8fc057a80fcd04a7420f8e8bcd0a7567c272e007b
+server:
+  port: 8080
+spring:
+  application:
+    name: book-movie-tickets_backend
+  datasource:
+    password: nambao12
+    url: jdbc:mysql://localhost:3306/ticket_booking?createDatabaseIfNotExist=true
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+        highlight_sql: true
+    show-sql: true
+  mail:
+    host: smtp.gmail.com
+    password: clwd trpd auwa toxk
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    username: vtinam252@gmail.com
