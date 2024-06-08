@@ -15,11 +15,11 @@ import java.util.List;
 public class Account implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id ;
+    private Integer id;
     @Column
-    private String email ;
+    private String email;
     @Column
-    private  String password ;
+    private String password;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -50,6 +50,10 @@ public class Account implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    @OneToMany(mappedBy = "account")
+    private List<Booking> bookings;
+    
 //    @Column
 //    private Role role ;
 }
