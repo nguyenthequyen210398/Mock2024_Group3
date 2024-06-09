@@ -2849,3 +2849,419 @@ Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make field i
 2024-06-09T21:33:24.568+07:00 TRACE 50672 --- [book-movie-tickets_backend] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
 2024-06-09T21:33:24.568+07:00 TRACE 50672 --- [book-movie-tickets_backend] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
 2024-06-09T21:33:24.568+07:00 DEBUG 50672 --- [book-movie-tickets_backend] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2024-06-09T22:13:20.573+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Added existing Filter initializer bean 'securityFilterChainRegistration'; order=-100, resource=class path resource [org/springframework/boot/autoconfigure/security/servlet/SecurityFilterAutoConfiguration.class]
+2024-06-09T22:13:20.575+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Added existing Servlet initializer bean 'dispatcherServletRegistration'; order=2147483647, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/DispatcherServletAutoConfiguration$DispatcherServletRegistrationConfiguration.class]
+2024-06-09T22:13:23.329+07:00  WARN 53169 --- [book-movie-tickets_backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-09T22:13:23.424+07:00 DEBUG 53169 --- [book-movie-tickets_backend] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-06-09T22:13:23.447+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'characterEncodingFilter'; order=-2147483648, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/HttpEncodingAutoConfiguration.class]
+2024-06-09T22:13:23.447+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'formContentFilter'; order=-9900, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration.class]
+2024-06-09T22:13:23.447+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'requestContextFilter'; order=-105, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter.class]
+2024-06-09T22:13:23.447+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'jwtAuthenticationFilter'; order=2147483647, resource=file [/Users/ast/Documents/Google Drive/MACBOOK/VTIAcademy/Mockproject/Team3/book-movie-tickets_backend/book-movie-tickets_backend/target/classes/group3/book_movie_tickets_backend/configuration/JwtAuthenticationFilter.class]
+2024-06-09T22:13:23.451+07:00 DEBUG 53169 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: springSecurityFilterChain urls=[/*] order=-100, characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105, jwtAuthenticationFilter urls=[/*] order=2147483647
+2024-06-09T22:13:23.451+07:00 DEBUG 53169 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: dispatcherServlet urls=[/]
+2024-06-09T22:13:23.588+07:00  WARN 53169 --- [book-movie-tickets_backend] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-06-09T22:13:23.852+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.AccountController:
+	{GET [/api/accounts]}: authenticatedUser()
+	{GET [/api]}: allUsers()
+2024-06-09T22:13:23.856+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.AuthenticationController:
+	{GET [/auth/change-password/send-code/{email}]}: sendCode(String)
+	{POST [/auth/change-password]}: changePassword(ChangePasswordForm)
+	{POST [/auth/auth-code-email]}: authenticateCodeAndEmail(EmailAndCode)
+	{POST [/auth/reset-password]}: resetPassword(ChangePasswordForm)
+	{POST [/auth/login]}: authenticate(LoginUserDto)
+	{POST [/auth/signup]}: register(RegisterUserDto)
+2024-06-09T22:13:23.862+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.EmployeeController:
+	{GET [/api/v1/employees/{id}]}: findById(Long)
+	{DELETE [/api/v1/employees/deleteById/{id}]}: deleteById(Long)
+	{GET [/api/v1/employees]}: findAll(EmployeeFilterForm,int,int,String,String)
+	{PUT [/api/v1/employees/{id}]}: update(Long,EmployeeUpdateForm)
+	{POST [/api/v1/employees]}: create(EmployeeCreateForm)
+2024-06-09T22:13:23.868+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.MovieController:
+	{GET [/api/v1/movies/{id}]}: findById(Integer)
+	{DELETE [/api/v1/movies/deleteById/{id}]}: deleteById(Integer)
+	{GET [/api/v1/movies]}: findAll()
+	{PUT [/api/v1/movies/{id}]}: update(Integer,Movie)
+	{POST [/api/v1/movies]}: create(Movie)
+2024-06-09T22:13:23.870+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.TicketController:
+	{GET [/api/v1/tickets/{id}]}: findById(Integer)
+	{DELETE [/api/v1/tickets/deleteById/{id}]}: deleteById(Integer)
+	{GET [/api/v1/tickets]}: findAll()
+	{PUT [/api/v1/tickets/{id}]}: update(Integer,Ticket)
+	{POST [/api/v1/tickets]}: create(Ticket)
+2024-06-09T22:13:23.874+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+	{ [/error]}: error(HttpServletRequest)
+2024-06-09T22:13:23.890+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.a.OpenApiWebMvcResource:
+	{GET [/v3/api-docs], produces [application/json]}: openapiJson(HttpServletRequest,String,Locale)
+	{GET [/v3/api-docs.yaml], produces [application/vnd.oai.openapi]}: openapiYaml(HttpServletRequest,String,Locale)
+2024-06-09T22:13:23.892+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.u.SwaggerWelcomeWebMvc:
+	{GET [/swagger-ui.html]}: redirectToUi(HttpServletRequest)
+2024-06-09T22:13:23.910+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.u.SwaggerConfigResource:
+	{GET [/v3/api-docs/swagger-config], produces [application/json]}: openapiJson(HttpServletRequest)
+2024-06-09T22:13:23.914+07:00 DEBUG 53169 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 29 mappings in 'requestMappingHandlerMapping'
+2024-06-09T22:13:23.920+07:00 DEBUG 53169 --- [book-movie-tickets_backend] [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Detected 0 mappings in 'beanNameHandlerMapping'
+2024-06-09T22:13:23.923+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] o.s.w.s.f.support.RouterFunctionMapping  : 0 RouterFunction(s) in 'routerFunctionMapping'
+2024-06-09T22:13:23.936+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/webjars/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T22:13:23.936+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-06-09T22:13:23.937+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/swagger-ui*/*swagger-initializer.js] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T22:13:23.937+07:00 TRACE 53169 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/swagger-ui*/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T22:13:23.937+07:00 DEBUG 53169 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-06-09T22:13:24.020+07:00 DEBUG 53169 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-06-09T22:16:10.714+07:00  INFO 53169 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-09T22:16:10.717+07:00 TRACE 53169 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.multipart.support.StandardServletMultipartResolver@56a7f57f
+2024-06-09T22:16:10.717+07:00 TRACE 53169 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver@97842a0
+2024-06-09T22:16:10.717+07:00 TRACE 53169 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.theme.FixedThemeResolver@12418d3f
+2024-06-09T22:16:10.718+07:00 TRACE 53169 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected DefaultRequestToViewNameTranslator
+2024-06-09T22:16:10.719+07:00 TRACE 53169 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected SessionFlashMapManager
+2024-06-09T22:16:10.719+07:00 DEBUG 53169 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-06-09T22:16:10.719+07:00  INFO 53169 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-06-09T22:16:10.762+07:00 TRACE 53169 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : 2 matching mappings: [{ [/error]}, { [/error], produces [text/html]}]
+2024-06-09T22:16:13.394+07:00 TRACE 53169 --- [book-movie-tickets_backend] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : 2 matching mappings: [{ [/error]}, { [/error], produces [text/html]}]
+2024-06-09T22:16:31.350+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Added existing Filter initializer bean 'securityFilterChainRegistration'; order=-100, resource=class path resource [org/springframework/boot/autoconfigure/security/servlet/SecurityFilterAutoConfiguration.class]
+2024-06-09T22:16:31.352+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Added existing Servlet initializer bean 'dispatcherServletRegistration'; order=2147483647, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/DispatcherServletAutoConfiguration$DispatcherServletRegistrationConfiguration.class]
+2024-06-09T22:16:34.183+07:00  WARN 53245 --- [book-movie-tickets_backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-09T22:16:34.300+07:00 DEBUG 53245 --- [book-movie-tickets_backend] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-06-09T22:16:34.351+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'characterEncodingFilter'; order=-2147483648, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/HttpEncodingAutoConfiguration.class]
+2024-06-09T22:16:34.352+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'formContentFilter'; order=-9900, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration.class]
+2024-06-09T22:16:34.352+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'requestContextFilter'; order=-105, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter.class]
+2024-06-09T22:16:34.353+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'jwtAuthenticationFilter'; order=2147483647, resource=file [/Users/ast/Documents/Google Drive/MACBOOK/VTIAcademy/Mockproject/Team3/book-movie-tickets_backend/book-movie-tickets_backend/target/classes/group3/book_movie_tickets_backend/configuration/JwtAuthenticationFilter.class]
+2024-06-09T22:16:34.358+07:00 DEBUG 53245 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: springSecurityFilterChain urls=[/*] order=-100, characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105, jwtAuthenticationFilter urls=[/*] order=2147483647
+2024-06-09T22:16:34.358+07:00 DEBUG 53245 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: dispatcherServlet urls=[/]
+2024-06-09T22:16:34.517+07:00  WARN 53245 --- [book-movie-tickets_backend] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-06-09T22:16:34.899+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.AccountController:
+	{GET [/api/accounts]}: authenticatedUser()
+	{GET [/api]}: allUsers()
+2024-06-09T22:16:34.904+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.AuthenticationController:
+	{POST [/auth/change-password]}: changePassword(ChangePasswordForm)
+	{POST [/auth/auth-code-email]}: authenticateCodeAndEmail(EmailAndCode)
+	{POST [/auth/reset-password]}: resetPassword(ChangePasswordForm)
+	{GET [/auth/change-password/send-code/{email}]}: sendCode(String)
+	{POST [/auth/login]}: authenticate(LoginUserDto)
+	{POST [/auth/signup]}: register(RegisterUserDto)
+2024-06-09T22:16:34.910+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.EmployeeController:
+	{GET [/api/v1/employees/{id}]}: findById(Long)
+	{DELETE [/api/v1/employees/deleteById/{id}]}: deleteById(Long)
+	{GET [/api/v1/employees]}: findAll(EmployeeFilterForm,int,int,String,String)
+	{PUT [/api/v1/employees/{id}]}: update(Long,EmployeeUpdateForm)
+	{POST [/api/v1/employees]}: create(EmployeeCreateForm)
+2024-06-09T22:16:34.917+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.MovieController:
+	{GET [/api/v1/movies/{id}]}: findById(Integer)
+	{DELETE [/api/v1/movies/deleteById/{id}]}: deleteById(Integer)
+	{GET [/api/v1/movies]}: findAll()
+	{PUT [/api/v1/movies/{id}]}: update(Integer,Movie)
+	{POST [/api/v1/movies]}: create(Movie)
+2024-06-09T22:16:34.924+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.TicketController:
+	{GET [/api/v1/tickets/{id}]}: findById(Integer)
+	{DELETE [/api/v1/tickets/deleteById/{id}]}: deleteById(Integer)
+	{GET [/api/v1/tickets]}: findAll()
+	{PUT [/api/v1/tickets/{id}]}: update(Integer,Ticket)
+	{POST [/api/v1/tickets]}: create(Ticket)
+2024-06-09T22:16:34.931+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+	{ [/error]}: error(HttpServletRequest)
+2024-06-09T22:16:34.957+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.a.OpenApiWebMvcResource:
+	{GET [/v3/api-docs], produces [application/json]}: openapiJson(HttpServletRequest,String,Locale)
+	{GET [/v3/api-docs.yaml], produces [application/vnd.oai.openapi]}: openapiYaml(HttpServletRequest,String,Locale)
+2024-06-09T22:16:34.959+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.u.SwaggerWelcomeWebMvc:
+	{GET [/swagger-ui.html]}: redirectToUi(HttpServletRequest)
+2024-06-09T22:16:34.960+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.u.SwaggerConfigResource:
+	{GET [/v3/api-docs/swagger-config], produces [application/json]}: openapiJson(HttpServletRequest)
+2024-06-09T22:16:34.965+07:00 DEBUG 53245 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 29 mappings in 'requestMappingHandlerMapping'
+2024-06-09T22:16:34.971+07:00 DEBUG 53245 --- [book-movie-tickets_backend] [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Detected 0 mappings in 'beanNameHandlerMapping'
+2024-06-09T22:16:34.976+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] o.s.w.s.f.support.RouterFunctionMapping  : 0 RouterFunction(s) in 'routerFunctionMapping'
+2024-06-09T22:16:34.988+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/webjars/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T22:16:34.988+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-06-09T22:16:34.989+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/swagger-ui*/*swagger-initializer.js] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T22:16:34.989+07:00 TRACE 53245 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/swagger-ui*/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T22:16:34.989+07:00 DEBUG 53245 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-06-09T22:16:35.091+07:00 DEBUG 53245 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-06-09T22:16:54.051+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Added existing Filter initializer bean 'securityFilterChainRegistration'; order=-100, resource=class path resource [org/springframework/boot/autoconfigure/security/servlet/SecurityFilterAutoConfiguration.class]
+2024-06-09T22:16:54.053+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Added existing Servlet initializer bean 'dispatcherServletRegistration'; order=2147483647, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/DispatcherServletAutoConfiguration$DispatcherServletRegistrationConfiguration.class]
+2024-06-09T22:16:56.609+07:00  WARN 53266 --- [book-movie-tickets_backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-09T22:16:56.704+07:00 DEBUG 53266 --- [book-movie-tickets_backend] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-06-09T22:16:56.727+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'characterEncodingFilter'; order=-2147483648, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/HttpEncodingAutoConfiguration.class]
+2024-06-09T22:16:56.727+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'formContentFilter'; order=-9900, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration.class]
+2024-06-09T22:16:56.727+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'requestContextFilter'; order=-105, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter.class]
+2024-06-09T22:16:56.727+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'jwtAuthenticationFilter'; order=2147483647, resource=file [/Users/ast/Documents/Google Drive/MACBOOK/VTIAcademy/Mockproject/Team3/book-movie-tickets_backend/book-movie-tickets_backend/target/classes/group3/book_movie_tickets_backend/configuration/JwtAuthenticationFilter.class]
+2024-06-09T22:16:56.730+07:00 DEBUG 53266 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: springSecurityFilterChain urls=[/*] order=-100, characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105, jwtAuthenticationFilter urls=[/*] order=2147483647
+2024-06-09T22:16:56.731+07:00 DEBUG 53266 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: dispatcherServlet urls=[/]
+2024-06-09T22:16:56.848+07:00  WARN 53266 --- [book-movie-tickets_backend] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-06-09T22:16:57.105+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.AccountController:
+	{GET [/api/accounts]}: authenticatedUser()
+	{GET [/api]}: allUsers()
+2024-06-09T22:16:57.109+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.AuthenticationController:
+	{POST [/auth/change-password]}: changePassword(ChangePasswordForm)
+	{POST [/auth/auth-code-email]}: authenticateCodeAndEmail(EmailAndCode)
+	{POST [/auth/reset-password]}: resetPassword(ChangePasswordForm)
+	{GET [/auth/change-password/send-code/{email}]}: sendCode(String)
+	{POST [/auth/login]}: authenticate(LoginUserDto)
+	{POST [/auth/signup]}: register(RegisterUserDto)
+2024-06-09T22:16:57.115+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.EmployeeController:
+	{GET [/api/v1/employees/{id}]}: findById(Long)
+	{DELETE [/api/v1/employees/deleteById/{id}]}: deleteById(Long)
+	{GET [/api/v1/employees]}: findAll(EmployeeFilterForm,int,int,String,String)
+	{PUT [/api/v1/employees/{id}]}: update(Long,EmployeeUpdateForm)
+	{POST [/api/v1/employees]}: create(EmployeeCreateForm)
+2024-06-09T22:16:57.120+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.MovieController:
+	{GET [/api/v1/movies/{id}]}: findById(Integer)
+	{DELETE [/api/v1/movies/deleteById/{id}]}: deleteById(Integer)
+	{GET [/api/v1/movies]}: findAll()
+	{PUT [/api/v1/movies/{id}]}: update(Integer,Movie)
+	{POST [/api/v1/movies]}: create(Movie)
+2024-06-09T22:16:57.122+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.TicketController:
+	{GET [/api/v1/tickets/{id}]}: findById(Integer)
+	{DELETE [/api/v1/tickets/deleteById/{id}]}: deleteById(Integer)
+	{GET [/api/v1/tickets]}: findAll()
+	{PUT [/api/v1/tickets/{id}]}: update(Integer,Ticket)
+	{POST [/api/v1/tickets]}: create(Ticket)
+2024-06-09T22:16:57.129+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+	{ [/error]}: error(HttpServletRequest)
+2024-06-09T22:16:57.147+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.a.OpenApiWebMvcResource:
+	{GET [/v3/api-docs], produces [application/json]}: openapiJson(HttpServletRequest,String,Locale)
+	{GET [/v3/api-docs.yaml], produces [application/vnd.oai.openapi]}: openapiYaml(HttpServletRequest,String,Locale)
+2024-06-09T22:16:57.148+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.u.SwaggerWelcomeWebMvc:
+	{GET [/swagger-ui.html]}: redirectToUi(HttpServletRequest)
+2024-06-09T22:16:57.149+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.u.SwaggerConfigResource:
+	{GET [/v3/api-docs/swagger-config], produces [application/json]}: openapiJson(HttpServletRequest)
+2024-06-09T22:16:57.151+07:00 DEBUG 53266 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 29 mappings in 'requestMappingHandlerMapping'
+2024-06-09T22:16:57.156+07:00 DEBUG 53266 --- [book-movie-tickets_backend] [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Detected 0 mappings in 'beanNameHandlerMapping'
+2024-06-09T22:16:57.160+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] o.s.w.s.f.support.RouterFunctionMapping  : 0 RouterFunction(s) in 'routerFunctionMapping'
+2024-06-09T22:16:57.172+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/webjars/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T22:16:57.172+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-06-09T22:16:57.172+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/swagger-ui*/*swagger-initializer.js] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T22:16:57.173+07:00 TRACE 53266 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/swagger-ui*/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T22:16:57.173+07:00 DEBUG 53266 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-06-09T22:16:57.255+07:00 DEBUG 53266 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-06-09T22:32:37.095+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Added existing Filter initializer bean 'securityFilterChainRegistration'; order=-100, resource=class path resource [org/springframework/boot/autoconfigure/security/servlet/SecurityFilterAutoConfiguration.class]
+2024-06-09T22:32:37.097+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Added existing Servlet initializer bean 'dispatcherServletRegistration'; order=2147483647, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/DispatcherServletAutoConfiguration$DispatcherServletRegistrationConfiguration.class]
+2024-06-09T22:32:39.606+07:00  WARN 53613 --- [book-movie-tickets_backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-09T22:32:39.705+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-06-09T22:32:39.728+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'characterEncodingFilter'; order=-2147483648, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/HttpEncodingAutoConfiguration.class]
+2024-06-09T22:32:39.728+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'formContentFilter'; order=-9900, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration.class]
+2024-06-09T22:32:39.728+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'requestContextFilter'; order=-105, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter.class]
+2024-06-09T22:32:39.729+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'jwtAuthenticationFilter'; order=2147483647, resource=file [/Users/ast/Documents/Google Drive/MACBOOK/VTIAcademy/Mockproject/Team3/book-movie-tickets_backend/book-movie-tickets_backend/target/classes/group3/book_movie_tickets_backend/configuration/JwtAuthenticationFilter.class]
+2024-06-09T22:32:39.732+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: springSecurityFilterChain urls=[/*] order=-100, characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105, jwtAuthenticationFilter urls=[/*] order=2147483647
+2024-06-09T22:32:39.732+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: dispatcherServlet urls=[/]
+2024-06-09T22:32:39.856+07:00  WARN 53613 --- [book-movie-tickets_backend] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-06-09T22:32:40.068+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.AccountController:
+	{GET [/api]}: allUsers()
+	{GET [/api/accounts]}: authenticatedUser()
+2024-06-09T22:32:40.072+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.AuthenticationController:
+	{POST [/auth/change-password]}: changePassword(ChangePasswordForm)
+	{POST [/auth/auth-code-email]}: authenticateCodeAndEmail(EmailAndCode)
+	{POST [/auth/reset-password]}: resetPassword(ChangePasswordForm)
+	{GET [/auth/change-password/send-code/{email}]}: sendCode(String)
+	{POST [/auth/login]}: authenticate(LoginUserDto)
+	{POST [/auth/signup]}: register(RegisterUserDto)
+2024-06-09T22:32:40.078+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.EmployeeController:
+	{GET [/api/v1/employees/{id}]}: findById(Long)
+	{DELETE [/api/v1/employees/deleteById/{id}]}: deleteById(Long)
+	{GET [/api/v1/employees]}: findAll(EmployeeFilterForm,int,int,String,String)
+	{PUT [/api/v1/employees/{id}]}: update(Long,EmployeeUpdateForm)
+	{POST [/api/v1/employees]}: create(EmployeeCreateForm)
+2024-06-09T22:32:40.083+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.MovieController:
+	{GET [/api/v1/movies/{id}]}: findById(Integer)
+	{DELETE [/api/v1/movies/deleteById/{id}]}: deleteById(Integer)
+	{GET [/api/v1/movies]}: findAll()
+	{PUT [/api/v1/movies/{id}]}: update(Integer,Movie)
+	{POST [/api/v1/movies]}: create(Movie)
+2024-06-09T22:32:40.085+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.TicketController:
+	{GET [/api/v1/tickets/{id}]}: findById(Integer)
+	{DELETE [/api/v1/tickets/deleteById/{id}]}: deleteById(Integer)
+	{GET [/api/v1/tickets]}: findAll()
+	{PUT [/api/v1/tickets/{id}]}: update(Integer,Ticket)
+	{POST [/api/v1/tickets]}: create(Ticket)
+2024-06-09T22:32:40.088+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+	{ [/error]}: error(HttpServletRequest)
+2024-06-09T22:32:40.100+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.a.OpenApiWebMvcResource:
+	{GET [/v3/api-docs], produces [application/json]}: openapiJson(HttpServletRequest,String,Locale)
+	{GET [/v3/api-docs.yaml], produces [application/vnd.oai.openapi]}: openapiYaml(HttpServletRequest,String,Locale)
+2024-06-09T22:32:40.101+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.u.SwaggerWelcomeWebMvc:
+	{GET [/swagger-ui.html]}: redirectToUi(HttpServletRequest)
+2024-06-09T22:32:40.102+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.u.SwaggerConfigResource:
+	{GET [/v3/api-docs/swagger-config], produces [application/json]}: openapiJson(HttpServletRequest)
+2024-06-09T22:32:40.103+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 29 mappings in 'requestMappingHandlerMapping'
+2024-06-09T22:32:40.108+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Detected 0 mappings in 'beanNameHandlerMapping'
+2024-06-09T22:32:40.111+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] o.s.w.s.f.support.RouterFunctionMapping  : 0 RouterFunction(s) in 'routerFunctionMapping'
+2024-06-09T22:32:40.125+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/webjars/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T22:32:40.127+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-06-09T22:32:40.128+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/swagger-ui*/*swagger-initializer.js] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T22:32:40.129+07:00 TRACE 53613 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/swagger-ui*/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T22:32:40.129+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-06-09T22:32:40.241+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-06-09T22:38:48.342+07:00  INFO 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-09T22:38:48.343+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.multipart.support.StandardServletMultipartResolver@14bbfdee
+2024-06-09T22:38:48.343+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver@3e966e67
+2024-06-09T22:38:48.343+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.theme.FixedThemeResolver@4cb641a5
+2024-06-09T22:38:48.344+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected DefaultRequestToViewNameTranslator
+2024-06-09T22:38:48.345+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected SessionFlashMapManager
+2024-06-09T22:38:48.345+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-06-09T22:38:48.345+07:00  INFO 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-06-09T22:38:48.391+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/tickets", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-06-09T22:38:48.393+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to group3.book_movie_tickets_backend.controller.TicketController#create(Ticket)
+2024-06-09T22:38:48.551+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [Ticket(Id=null, order_id=1, movie_id=1, seat_id=1, room_id=1, price=2.0, createdAt=null, updatedAt=null, created_by=2, updated_by=1, booking=null)]
+2024-06-09T22:38:48.560+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.method.HandlerMethod             : Arguments: [Ticket(Id=null, order_id=1, movie_id=1, seat_id=1, room_id=1, price=2.0, createdAt=null, updatedAt=null, created_by=2, updated_by=1, booking=null)]
+2024-06-09T22:38:48.686+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-06-09T22:38:48.686+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Nothing to write: null body
+2024-06-09T22:38:48.687+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2024-06-09T22:38:48.687+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-06-09T22:38:48.688+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2024-06-09T22:38:52.276+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/tickets", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-06-09T22:38:52.286+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to group3.book_movie_tickets_backend.controller.TicketController#findAll()
+2024-06-09T22:38:52.287+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-3] o.s.web.method.HandlerMethod             : Arguments: []
+2024-06-09T22:38:52.404+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-06-09T22:38:52.405+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Ticket(Id=1, order_id=1, movie_id=1, seat_id=1, room_id=1, price=2.0, createdAt=2024-06-09T22:38:48.590414, updatedAt=2024-06-09T22:38:48.590524, created_by=2, updated_by=1, booking=null)]]
+2024-06-09T22:38:52.420+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-06-09T22:38:52.421+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2024-06-09T22:38:57.554+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/tickets/1", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-06-09T22:38:57.554+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to group3.book_movie_tickets_backend.controller.TicketController#findById(Integer)
+2024-06-09T22:38:57.555+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-4] o.s.web.method.HandlerMethod             : Arguments: [1]
+2024-06-09T22:38:57.580+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-06-09T22:38:57.580+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Writing [Ticket(Id=1, order_id=1, movie_id=1, seat_id=1, room_id=1, price=2.0, createdAt=2024-06-09T22:38:48.590414, updatedAt=2024-06-09T22:38:48.590524, created_by=2, updated_by=1, booking=null)]
+2024-06-09T22:38:57.581+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-06-09T22:38:57.581+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2024-06-09T22:39:03.587+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : DELETE "/api/v1/tickets/deleteById/1", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-06-09T22:39:03.587+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to group3.book_movie_tickets_backend.controller.TicketController#deleteById(Integer)
+2024-06-09T22:39:03.588+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-5] o.s.web.method.HandlerMethod             : Arguments: [1]
+2024-06-09T22:39:03.599+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-06-09T22:39:03.599+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Nothing to write: null body
+2024-06-09T22:39:03.599+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2024-06-09T22:39:03.599+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-06-09T22:39:03.599+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2024-06-09T22:39:06.854+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/tickets", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-06-09T22:39:06.855+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to group3.book_movie_tickets_backend.controller.TicketController#findAll()
+2024-06-09T22:39:06.855+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-6] o.s.web.method.HandlerMethod             : Arguments: []
+2024-06-09T22:39:06.865+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-06-09T22:39:06.865+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-06-09T22:39:06.866+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-06-09T22:39:06.867+07:00 DEBUG 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
+2024-06-09T22:53:52.870+07:00 TRACE 53613 --- [book-movie-tickets_backend] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : 2 matching mappings: [{ [/error]}, { [/error], produces [text/html]}]
+2024-06-09T22:54:11.506+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Added existing Filter initializer bean 'securityFilterChainRegistration'; order=-100, resource=class path resource [org/springframework/boot/autoconfigure/security/servlet/SecurityFilterAutoConfiguration.class]
+2024-06-09T22:54:11.508+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Added existing Servlet initializer bean 'dispatcherServletRegistration'; order=2147483647, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/DispatcherServletAutoConfiguration$DispatcherServletRegistrationConfiguration.class]
+2024-06-09T22:54:14.123+07:00  WARN 54462 --- [book-movie-tickets_backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-09T22:54:14.217+07:00 DEBUG 54462 --- [book-movie-tickets_backend] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-06-09T22:54:14.241+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'characterEncodingFilter'; order=-2147483648, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/HttpEncodingAutoConfiguration.class]
+2024-06-09T22:54:14.241+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'formContentFilter'; order=-9900, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration.class]
+2024-06-09T22:54:14.241+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'requestContextFilter'; order=-105, resource=class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter.class]
+2024-06-09T22:54:14.242+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Created Filter initializer for bean 'jwtAuthenticationFilter'; order=2147483647, resource=file [/Users/ast/Documents/Google Drive/MACBOOK/VTIAcademy/Mockproject/Team3/book-movie-tickets_backend/book-movie-tickets_backend/target/classes/group3/book_movie_tickets_backend/configuration/JwtAuthenticationFilter.class]
+2024-06-09T22:54:14.245+07:00 DEBUG 54462 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: springSecurityFilterChain urls=[/*] order=-100, characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105, jwtAuthenticationFilter urls=[/*] order=2147483647
+2024-06-09T22:54:14.246+07:00 DEBUG 54462 --- [book-movie-tickets_backend] [main] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: dispatcherServlet urls=[/]
+2024-06-09T22:54:14.374+07:00  WARN 54462 --- [book-movie-tickets_backend] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-06-09T22:54:14.651+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.AccountController:
+	{GET [/api/accounts]}: authenticatedUser()
+	{GET [/api]}: allUsers()
+2024-06-09T22:54:14.655+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.AuthenticationController:
+	{POST [/auth/change-password]}: changePassword(ChangePasswordForm)
+	{POST [/auth/auth-code-email]}: authenticateCodeAndEmail(EmailAndCode)
+	{POST [/auth/reset-password]}: resetPassword(ChangePasswordForm)
+	{GET [/auth/change-password/send-code/{email}]}: sendCode(String)
+	{POST [/auth/login]}: authenticate(LoginUserDto)
+	{POST [/auth/signup]}: register(RegisterUserDto)
+2024-06-09T22:54:14.662+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.EmployeeController:
+	{GET [/api/v1/employees/{id}]}: findById(Long)
+	{DELETE [/api/v1/employees/deleteById/{id}]}: deleteById(Long)
+	{GET [/api/v1/employees]}: findAll(EmployeeFilterForm,int,int,String,String)
+	{PUT [/api/v1/employees/{id}]}: update(Long,EmployeeUpdateForm)
+	{POST [/api/v1/employees]}: create(EmployeeCreateForm)
+2024-06-09T22:54:14.667+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.MovieController:
+	{GET [/api/v1/movies/{id}]}: findById(Integer)
+	{DELETE [/api/v1/movies/deleteById/{id}]}: deleteById(Integer)
+	{GET [/api/v1/movies]}: findAll()
+	{PUT [/api/v1/movies/{id}]}: update(Integer,Movie)
+	{POST [/api/v1/movies]}: create(Movie)
+2024-06-09T22:54:14.669+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.SeatController:
+	{GET [/api/v1/seats/{id}]}: findById(Integer)
+	{DELETE [/api/v1/seats/deleteById/{id}]}: deleteById(Integer)
+	{GET [/api/v1/seats]}: findAll()
+	{PUT [/api/v1/seats/{id}]}: update(Integer,Seat)
+	{POST [/api/v1/seats]}: create(Seat)
+2024-06-09T22:54:14.671+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	g.b.c.TicketController:
+	{GET [/api/v1/tickets/{id}]}: findById(Integer)
+	{DELETE [/api/v1/tickets/deleteById/{id}]}: deleteById(Integer)
+	{GET [/api/v1/tickets]}: findAll()
+	{PUT [/api/v1/tickets/{id}]}: update(Integer,Ticket)
+	{POST [/api/v1/tickets]}: create(Ticket)
+2024-06-09T22:54:14.674+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+	{ [/error]}: error(HttpServletRequest)
+2024-06-09T22:54:14.689+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.a.OpenApiWebMvcResource:
+	{GET [/v3/api-docs], produces [application/json]}: openapiJson(HttpServletRequest,String,Locale)
+	{GET [/v3/api-docs.yaml], produces [application/vnd.oai.openapi]}: openapiYaml(HttpServletRequest,String,Locale)
+2024-06-09T22:54:14.690+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.u.SwaggerWelcomeWebMvc:
+	{GET [/swagger-ui.html]}: redirectToUi(HttpServletRequest)
+2024-06-09T22:54:14.691+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 
+	o.s.w.u.SwaggerConfigResource:
+	{GET [/v3/api-docs/swagger-config], produces [application/json]}: openapiJson(HttpServletRequest)
+2024-06-09T22:54:14.693+07:00 DEBUG 54462 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 34 mappings in 'requestMappingHandlerMapping'
+2024-06-09T22:54:14.698+07:00 DEBUG 54462 --- [book-movie-tickets_backend] [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Detected 0 mappings in 'beanNameHandlerMapping'
+2024-06-09T22:54:14.702+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] o.s.w.s.f.support.RouterFunctionMapping  : 0 RouterFunction(s) in 'routerFunctionMapping'
+2024-06-09T22:54:14.715+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/webjars/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T22:54:14.715+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-06-09T22:54:14.716+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/swagger-ui*/*swagger-initializer.js] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T22:54:14.716+07:00 TRACE 54462 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped [/swagger-ui*/**] onto ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-06-09T22:54:14.716+07:00 DEBUG 54462 --- [book-movie-tickets_backend] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-06-09T22:54:14.798+07:00 DEBUG 54462 --- [book-movie-tickets_backend] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-06-09T22:55:07.922+07:00  INFO 54462 --- [book-movie-tickets_backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-09T22:55:07.923+07:00 TRACE 54462 --- [book-movie-tickets_backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.multipart.support.StandardServletMultipartResolver@76d1acf9
+2024-06-09T22:55:07.924+07:00 TRACE 54462 --- [book-movie-tickets_backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver@4537c9f8
+2024-06-09T22:55:07.924+07:00 TRACE 54462 --- [book-movie-tickets_backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.theme.FixedThemeResolver@140e003e
+2024-06-09T22:55:07.925+07:00 TRACE 54462 --- [book-movie-tickets_backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected DefaultRequestToViewNameTranslator
+2024-06-09T22:55:07.926+07:00 TRACE 54462 --- [book-movie-tickets_backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected SessionFlashMapManager
+2024-06-09T22:55:07.926+07:00 DEBUG 54462 --- [book-movie-tickets_backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-06-09T22:55:07.926+07:00  INFO 54462 --- [book-movie-tickets_backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-06-09T22:55:07.976+07:00 TRACE 54462 --- [book-movie-tickets_backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/seats", parameters={}, headers={masked} in DispatcherServlet 'dispatcherServlet'
+2024-06-09T22:55:07.978+07:00 TRACE 54462 --- [book-movie-tickets_backend] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to group3.book_movie_tickets_backend.controller.SeatController#create(Seat)
+2024-06-09T22:55:08.105+07:00 TRACE 54462 --- [book-movie-tickets_backend] [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [Seat(id=null, room=null, row=J, col=9, type=null)]
+2024-06-09T22:55:08.116+07:00 TRACE 54462 --- [book-movie-tickets_backend] [http-nio-8080-exec-2] o.s.web.method.HandlerMethod             : Arguments: [Seat(id=null, room=null, row=J, col=9, type=null)]
+2024-06-09T22:55:08.230+07:00 DEBUG 54462 --- [book-movie-tickets_backend] [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-06-09T22:55:08.231+07:00 DEBUG 54462 --- [book-movie-tickets_backend] [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Nothing to write: null body
+2024-06-09T22:55:08.232+07:00 TRACE 54462 --- [book-movie-tickets_backend] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerAdapter : Applying default cacheSeconds=-1
+2024-06-09T22:55:08.232+07:00 TRACE 54462 --- [book-movie-tickets_backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : No view rendering, null ModelAndView returned.
+2024-06-09T22:55:08.233+07:00 DEBUG 54462 --- [book-movie-tickets_backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK, headers={masked}
