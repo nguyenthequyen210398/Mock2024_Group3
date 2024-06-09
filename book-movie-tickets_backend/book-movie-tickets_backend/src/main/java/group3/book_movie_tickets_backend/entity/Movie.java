@@ -5,7 +5,6 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.awt.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,7 +15,7 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
     @Column
-    private int name;
+    private String name;
     @Column
     private int year;
     @Column
@@ -25,7 +24,7 @@ public class Movie {
     @Column
     private int type;
     @Column
-    private TextArea description;
+    private String description;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)

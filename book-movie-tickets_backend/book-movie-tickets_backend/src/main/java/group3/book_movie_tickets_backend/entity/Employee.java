@@ -3,6 +3,7 @@ package group3.book_movie_tickets_backend.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+//Remove This entity
 @Entity
 @Table(name = "employees")
 @Data
@@ -12,18 +13,18 @@ public class Employee {
     private Long id;
 
     @Column
-    private String fullName ;
+    private String fullName;
 
     @Column
-    private String username ;
+    private String username;
 
     @Column
-    private String password ;
+    private String password;
 
     @Column
-    private String address ;
+    private String address;
 
     @Column
-    private int age ;
+    private int age;
 
 }
