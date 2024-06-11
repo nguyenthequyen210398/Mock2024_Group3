@@ -1,18 +1,20 @@
 package group3.book_movie_tickets_backend.service;
 
-import group3.book_movie_tickets_backend.entity.Movie;
-
-import java.util.List;
+import group3.book_movie_tickets_backend.dto.MovieDto;
+import group3.book_movie_tickets_backend.form.MovieCreateForm;
+import group3.book_movie_tickets_backend.form.MovieFilterForm;
+import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
 
 public interface IMovieService {
-    void create(Movie movie);
+    @Transactional
+    void create(MovieCreateForm form);
 
-    List<Movie> getAll();
+    Page<MovieDto> getAll(MovieFilterForm form, int pageNo, int pageSize, String sortBy, String sortDir);
 
-    Movie findById(Integer id);
+    MovieDto getById(Integer id);
 
-    void updateById(Integer id, Movie movie);
+    void updateById(Integer id, MovieDto form);
 
     void deleteById(Integer id);
-
 }
