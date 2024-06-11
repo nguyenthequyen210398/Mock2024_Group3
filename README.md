@@ -9,6 +9,8 @@ Folder structure:
    - routes: chứa định tuyến của trang
    - services:nơi lấy dữ liệu khi gọi api
    - utils: chứa các hàm dùng cho toàn bộ ứng dụng ( formatDate(), ....)
+
+
 Code BE : 
 Folder structure:
    - Configuration: Chứa các file cấu hình
