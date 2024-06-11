@@ -1,17 +1,19 @@
 package group3.book_movie_tickets_backend.service;
 
-import group3.book_movie_tickets_backend.entity.Seat;
-
-import java.util.List;
+import group3.book_movie_tickets_backend.dto.SeatDto;
+import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
 
 public interface ISeatService {
-    void create(Seat seat);
+    @Transactional
+    void create(SeatDto form);
 
-    List<Seat> getAll();
 
-    Seat findById(Integer id);
+    Page<SeatDto> getAll(int pageNo, int pageSize, String sortBy, String sortDir);
 
-    void updateById(Integer id, Seat seat);
+    SeatDto getById(Integer id);
+
+    void updateById(Integer id, SeatDto form);
 
     void deleteById(Integer id);
 }
