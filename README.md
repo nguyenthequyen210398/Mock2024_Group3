@@ -1,3 +1,14 @@
+Code FE : 
+Folder structure:
+   - api: chứa api url
+   - assets: chứa các thành phần dùng chung như images,..
+   - components: chứa cáccomponent dùng chung có thể tái sử dụng
+   - layouts: chứa các bố cục dùng chung như header, footer,...
+   - pages: chứa các trang( màn hình của dự án)
+   - redux: cấu hình của redux
+   - routes: chứa định tuyến của trang
+   - services:nơi lấy dữ liệu khi gọi api
+   - utils: chứa các hàm dùng cho toàn bộ ứng dụng ( formatDate(), ....)
 Code BE : 
 Folder structure:
    - Configuration: Chứa các file cấu hình
