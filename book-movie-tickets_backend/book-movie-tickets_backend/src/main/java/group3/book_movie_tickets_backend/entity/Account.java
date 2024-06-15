@@ -53,7 +53,10 @@ public class Account implements UserDetails {
 
     @OneToMany(mappedBy = "account")
     private List<Booking> bookings;
-    
+
+    @OneToOne
+    @JoinColumn(name = "userdetail_id", referencedColumnName = "id")
+    private UserDetail userDetail;
 //    @Column
 //    private Role role ;
 }
