@@ -6,18 +6,18 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table(name = "rooms")
+@Table(name = "movie_types")
 @Data
-public class Room {
+public class MovieTypes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    
     @Column
-    private int number;
+    private String name;
 
-    @OneToMany(mappedBy = "room")
-    private List<Seat> seat;
+    @OneToMany(mappedBy = "type")
+    private List<Movie> movieList;
 
-    @OneToMany(mappedBy = "room")
-    private List<Showtimes> showtimesList;
+
 }

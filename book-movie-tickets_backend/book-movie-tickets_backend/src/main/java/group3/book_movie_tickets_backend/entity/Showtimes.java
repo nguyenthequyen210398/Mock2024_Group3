@@ -3,25 +3,27 @@ package group3.book_movie_tickets_backend.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Entity
-@Table(name = "seats")
+import java.time.LocalDateTime;
+
 @Data
-public class Seat {
+@Entity
+@Table(name = "showtimes")
+public class Showtimes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column
+    private LocalDateTime startAt;
+    @Column
+    private LocalDateTime endAt;
+
+    @ManyToOne
+    @JoinColumn(name = "movie_id", referencedColumnName = "id")
+    private Movie movie;
 
     @ManyToOne
     @JoinColumn(name = "room_id", referencedColumnName = "id")
     private Room room;
 
-    @Column
-    private String row;
-
-    @Column
-    private int col;
-    
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "type_id", referencedColumnName = "id")
-    private SeatType type;
 }

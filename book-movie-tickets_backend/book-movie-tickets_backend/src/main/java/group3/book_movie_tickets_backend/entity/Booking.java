@@ -19,7 +19,7 @@ public class Booking {
 
     @OneToMany(mappedBy = "booking")
     private List<Ticket> tickets;
-    
+    @Column
     private double total;
 
 }
