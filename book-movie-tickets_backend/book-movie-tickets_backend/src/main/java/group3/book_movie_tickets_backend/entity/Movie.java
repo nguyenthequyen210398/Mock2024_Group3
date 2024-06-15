@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "movies")
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    private Integer id;
     @Column
     private String name;
     @Column
@@ -21,8 +22,10 @@ public class Movie {
     @Column
     private String origin;
 
-    @Column
-    private int type;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "type_id", referencedColumnName = "id")
+    private MovieTypes type;
+
     @Column
     private String description;
 
@@ -38,4 +41,9 @@ public class Movie {
     private int created_by;
     @Column
     private int updated_by;
+
+    @OneToMany(mappedBy = "movie")
+    private List<Showtimes> showtimesList;
+
+
 }
