@@ -10,8 +10,11 @@ function HomePage() {
     return (
         <>
             <Header />
+
             <Banner />
             <Nav />
+
+
             <Footer />
         </>
     )

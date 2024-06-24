@@ -1,3 +1,4 @@
+import '../main.scss'
 import { Anchor } from 'antd';
 import MovieIsShowing from '../components/MovieIsShowing';
 import MovieComing from '../components/MovieComing';

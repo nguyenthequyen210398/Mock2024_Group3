@@ -14,6 +14,7 @@ function Banner() {
                     <button type="button" data-bs-target="#demo" data-bs-slide-to="0" className="active"></button>
                     <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
                     <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+
                 </div>
 
                 {/* <!-- The slideshow/carousel --> */}
@@ -27,6 +28,7 @@ function Banner() {
                     <div className="carousel-item">
                         <img src="../../src/assets/img3.jpg" alt="New York" className="d-block" style={{ width: "100%" }} />
                     </div>
+
                 </div>
 
                 {/* <!-- Left and right controls/icons --> */}

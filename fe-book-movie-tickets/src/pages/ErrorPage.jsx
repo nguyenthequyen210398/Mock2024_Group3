@@ -1,6 +1,6 @@
 import './error.scss';
 
-export default function ErrorPage() {
+function ErrorPage() {
 
 
     return (
@@ -21,3 +21,4 @@ export default function ErrorPage() {
         </>
     );
 }
+export default ErrorPage;

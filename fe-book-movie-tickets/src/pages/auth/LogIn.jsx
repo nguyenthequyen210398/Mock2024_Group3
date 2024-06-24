@@ -1,4 +1,5 @@
-// import LoginButton from '../../components/LoginButton';
+
+import { Link } from 'react-router-dom';
 import './auth.scss';
 
 function LogIn() {
@@ -50,13 +51,8 @@ function LogIn() {
         </div>
 
         <div className="text-center fs-6 mt-5">
-          <button className="fs-6" to={'/reset-password'}>
-            Quên mật khẩu?
-          </button>{' '}
-          or{' '}
-          <button className="fs-6" to={'/register'}>
-            Đăng ký
-          </button>
+          <Link className="fs-6" to={"/reset-password"}>Quên mật khẩu?</Link> or <Link className="fs-6" to={"/register"}>Đăng ký</Link>
+
         </div>
       </div>
 
