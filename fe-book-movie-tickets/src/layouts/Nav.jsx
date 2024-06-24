@@ -1,4 +1,7 @@
+import '../main.scss'
 import { Anchor } from 'antd';
+import MovieIsShowing from '../components/MovieIsShowing';
+import MovieComing from '../components/MovieComing';
 function Nav() {
 
   return (
@@ -38,7 +41,9 @@ function Nav() {
             textAlign: 'center',
             background: 'rgba(0,255,0,0.02)',
           }}
-        />
+        > <MovieIsShowing /> </div>
+
+
         <div
           id="part-2"
           style={{
@@ -47,7 +52,7 @@ function Nav() {
             textAlign: 'center',
             background: 'rgba(0,0,255,0.02)',
           }}
-        />
+        >  <MovieComing /> </div>
         <div
           id="part-3"
           style={{

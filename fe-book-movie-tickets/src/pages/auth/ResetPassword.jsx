@@ -1,4 +1,4 @@
-
+import './auth.scss'
 function ResetPassword() {
 
     return (

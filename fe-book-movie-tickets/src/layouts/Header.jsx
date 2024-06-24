@@ -1,11 +1,9 @@
 
+import { Link } from 'react-router-dom';
 import '../main.scss'
-import { UserOutlined  } from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 function Header() {
-    const handleLogin = () => {
-        // Xử lý hành động khi người dùng nhấp vào nút đăng nhập
-        console.log('Đăng nhập clicked');
-    }
+
     return (
         <>
             {/* 
@@ -20,8 +18,9 @@ function Header() {
                     <img src="../../src/assets/logo.jpg" alt="Logo" />
                 </div>
                 <div className="header__login">
-                    <button onClick={handleLogin}><UserOutlined /> Đăng nhập</button>
-                    
+                    {/* <button onClick={handleLogin}><UserOutlined /> Đăng nhập</button> */}
+                    <Link className="header__login" to={"/login"}> <UserOutlined /> Đăng nhập</Link> or <Link to={"/register"}>Đăng ký</Link>
+
                 </div>
             </header>
 
