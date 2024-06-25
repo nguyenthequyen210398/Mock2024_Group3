@@ -9,6 +9,7 @@ function Nav() {
       <div className='nav'
         style={{
           padding: '5px',
+
         }}
       >
         <Anchor
@@ -37,7 +38,7 @@ function Nav() {
           id="part-1"
           style={{
             width: '100vw',
-            height: '100vh',
+            height: '350vh',
             textAlign: 'center',
             background: 'rgba(0,255,0,0.02)',
           }}
@@ -48,7 +49,7 @@ function Nav() {
           id="part-2"
           style={{
             width: '100vw',
-            height: '100vh',
+            height: '350vh',
             textAlign: 'center',
             background: 'rgba(0,0,255,0.02)',
           }}

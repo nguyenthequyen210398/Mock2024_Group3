@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    // box-sizing: border-box;
+    
     
 }
 
@@ -82,6 +82,7 @@
   }
 }
 
+
 body {
   margin-top: 100px;
   display: block;
@@ -101,11 +102,18 @@ body {
   //     height: 300px;
   //   }
   // }
+
+
   
   }
 /* Footer.css */
 
+.nav{
+  font-size: 1.2rem;
+color: #d14444;
+}
 footer {
+  
   background-color: #333;
   color: #fff;
   padding: 50px 0;
@@ -178,8 +186,8 @@ footer {
 
 .movie-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Thiết lập lưới với tối đa 4 phần tử trên mỗi dòng */
+  gap: 20px; /* Khoảng cách giữa các phần tử */
 }
 
 .movie-item {
