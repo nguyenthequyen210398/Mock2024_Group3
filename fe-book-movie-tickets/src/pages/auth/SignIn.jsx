@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import './Login.scss';
+import './SignIn.scss';
 
-function Login() {
+function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
@@ -142,4 +142,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignIn;
