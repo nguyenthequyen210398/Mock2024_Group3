@@ -2,14 +2,14 @@ import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
-import LogIn from './pages/auth/LogIn';
+import Login from './pages/auth/Login.jsx';
 
 function App() {
  
 
   return (
     <>
-      <LogIn />
+      <Login />
     </>
   );
 }
