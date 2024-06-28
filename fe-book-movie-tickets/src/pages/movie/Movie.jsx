@@ -2,7 +2,7 @@ import  { useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import {Button, Modal, Card, Dropdown} from 'react-bootstrap';
 
-function TicketMana() {
+function Movie() {
     const [selectedEmployee, setSelectedEmployee] = useState(null);
     const [search, setSearch] = useState('');
     const [showEditModal, setShowEditModal] = useState(false);
@@ -68,7 +68,7 @@ function TicketMana() {
         <div className="container mt-5">
             <Card className="col-10 mx-auto">
                 <Card.Body>
-                    <Card.Title className="text-center fs-1 mb-4">Ticket List</Card.Title>
+                    <Card.Title className="text-center fs-1 mb-4">Movie List</Card.Title>
                     <div className="container">
                         <div className="row my-4 ">
                             <div className="col-6 p-0">
@@ -179,4 +179,4 @@ function TicketMana() {
     );
 }
 
-export default TicketMana;
+export default Movie;
