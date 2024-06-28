@@ -1,16 +1,19 @@
-import './App.css';
 
-import SignIn from "./pages/auth/SignIn.jsx";
-import ChangePassword from "./pages/auth/ChangePassword.jsx";
-import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
+
+import HomePage from './pages/main/HomePage';
 
 function App() {
 
-    return (
-        <>
-            <ForgotPassword/>
-        </>
-    );
+
+  return (
+    <>
+      {/* <ErrorPage /> */}
+      {/* <Footer /> */}
+      {/* <Header /> */}
+      <HomePage />
+
+    </>
+  );
 }
 
 export default App;
