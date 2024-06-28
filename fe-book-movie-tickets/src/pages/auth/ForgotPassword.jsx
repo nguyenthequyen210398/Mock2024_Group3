@@ -1,5 +1,5 @@
 import {useState} from "react";
-import './ForgotPassword.scss';
+
 
 function ForgotPassword() {
     const [forgotPasswordForm, setForgotPasswordForm] = useState({
@@ -28,122 +28,124 @@ function ForgotPassword() {
     const clearError = () => {
         setError(false);
     };
+
+    /*    const returnLogin = () => {
+            // Redirect or handle returning to login page
+            console.log('Returning to login');
+        };*/
+
+
+
     return (
         <section className="py-3 py-md-5 py-xl-8">
             <div className="container">
                 <div className="row">
                     <div className="col-12">
                         <div className="mb-5">
-                            <h2 className="display-5 fw-bold text-center">Sign in</h2>
-                            <p className="text-center m-0">
-                                Dont have an account? <a href="signup">Sign up</a>
-                            </p>
+                            <h2 className="display-5 fw-bold text-center">Send Code</h2>
+                            <p className="text-center m-0">Typing your new password.</p>
                         </div>
                     </div>
                 </div>
                 <div className="row justify-content-center">
-                    <div className="col-12 col-lg-10 col-xl-8">
+                    <div className="col-12 ">
                         <div className="row gy-5 justify-content-center">
-                            <div className="col-12 col-lg-5">
+                            <div className="col-12">
                                 <form onSubmit={onSubmit}>
-                                    <div className="row gy-3 overflow-hidden">
+                                    <div className="col-12">
+                                        <div className="form-floating mb-3">
+                                            <input
+                                                type="email"
+                                                className="form-control border-0 border-bottom rounded-0"
+                                                id="email"
+                                                placeholder="name@example.com"
+                                                required
+                                                value={forgotPasswordForm.email}
+                                                onChange={(e) =>
+                                                    setForgotPasswordForm({
+                                                        ...forgotPasswordForm,
+                                                        email: e.target.value,
+                                                    })
+                                                }
+                                                onFocus={clearError}
+                                            />
+                                            <label htmlFor="email" className="form-label">
+                                                Email
+                                            </label>
+                                        </div>
+                                    </div>
+                                    {sendEmail && (
                                         <div className="col-12">
                                             <div className="form-floating mb-3">
                                                 <input
-                                                    type="email"
+                                                    type="text"
                                                     className="form-control border-0 border-bottom rounded-0"
-                                                    id="email"
-                                                    placeholder="name@example.com"
+                                                    id="code"
+                                                    placeholder="code"
                                                     required
-                                                    value={forgotPasswordForm.email}
+                                                    value={forgotPasswordForm.code}
                                                     onChange={(e) =>
                                                         setForgotPasswordForm({
                                                             ...forgotPasswordForm,
-                                                            email: e.target.value,
+                                                            code: e.target.value,
                                                         })
                                                     }
                                                     onFocus={clearError}
                                                 />
-                                                <label htmlFor="email" className="form-label">
-                                                    Email
+                                                <label htmlFor="code" className="form-label">
+                                                    Code
                                                 </label>
                                             </div>
                                         </div>
-                                        {sendEmail && (
-                                            <div className="col-12">
-                                                <div className="form-floating mb-3">
-                                                    <input
-                                                        type="text"
-                                                        className="form-control border-0 border-bottom rounded-0"
-                                                        id="code"
-                                                        placeholder="code"
-                                                        required
-                                                        value={forgotPasswordForm.code}
-                                                        onChange={(e) =>
-                                                            setForgotPasswordForm({
-                                                                ...forgotPasswordForm,
-                                                                code: e.target.value,
-                                                            })
-                                                        }
-                                                        onFocus={clearError}
-                                                    />
-                                                    <label htmlFor="code" className="form-label">
-                                                        Code
-                                                    </label>
-                                                </div>
-                                            </div>
+                                    )}
+                                    <div className="col-12">
+                                        {error && (
+                                            <div className="text-danger">Wrong email or Code</div>
                                         )}
-                                        <div className="col-12">
-                                            {error && (
-                                                <div className="text-danger">Wrong email or Code</div>
-                                            )}
-                                            {!sendEmail && (
-                                                <div className="d-grid">
-                                                    <button
-                                                        type="button"
-                                                        className="btn btn-lg btn-dark rounded-0 fs-6"
-                                                        onClick={giveCode}
-                                                    >
-                                                        Send CODE
-                                                    </button>
-                                                </div>
-                                            )}
-                                            {sendEmail && (
-                                                <div className="text-success">
-                                                    Code sent to email successfully!
-                                                </div>
-                                            )}
-                                            {sendEmail && (
-                                                <div className="d-grid">
-                                                    <button
-                                                        type="submit"
-                                                        className="btn btn-lg btn-dark rounded-0 fs-6"
-                                                    >
-                                                        Change password
-                                                    </button>
-                                                </div>
-                                            )}
+                                        {!sendEmail && (
                                             <div className="d-grid">
                                                 <button
                                                     type="button"
-                                                    className="btn btn-lg btn-light rounded-0 fs-6 mt-3"
-                                                    onClick={returnLogin}
+                                                    className="btn btn-lg btn-dark rounded-0 fs-6"
+                                                    onClick={giveCode}
                                                 >
-                                                    Cancel
+                                                    Send CODE
                                                 </button>
                                             </div>
+                                        )}
+                                        {sendEmail && (
+                                            <div className="text-success">
+                                                Code sent to email successfully!
+                                            </div>
+                                        )}
+                                        {sendEmail && (
+                                            <div className="d-grid">
+                                                <button
+                                                    type="submit"
+                                                    className="btn btn-lg btn-dark rounded-0 fs-6"
+                                                >
+                                                    Change password
+                                                </button>
+                                            </div>
+                                        )}
+                                        <div className="d-grid">
+                                            <button
+                                                type="button"
+                                                className="btn btn-lg btn-light rounded-0 fs-6 mt-3"
+                                                onClick={returnLogin}
+                                            >
+                                                Cancel
+                                            </button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
-                            <div className="col-12 col-lg-2 d-flex align-items-center justify-content-center gap-3 flex-lg-column">
-                                <div className="bg-dark h-100 d-none d-lg-block" style={{ width: '1px', '--bs-bg-opacity': 0.1 }}></div>
-                                <div className="bg-dark w-100 d-lg-none" style={{ height: '1px', '--bs-bg-opacity': 0.1 }}></div>
-                                <div>or</div>
-                                <div className="bg-dark h-100 d-none d-lg-block" style={{ width: '1px', '--bs-bg-opacity': 0.1 }}></div>
-                                <div className="bg-dark w-100 d-lg-none" style={{ height: '1px', '--bs-bg-opacity': 0.1 }}></div>
-                            </div>
-                            <div className="col-12 col-lg-5 d-flex align-items-center">
+                            <div className="col-12  d-flex align-items-center">
+                                <div className="col-12 col-lg-2 d-flex align-items-center justify-content-center gap-3 flex-lg-column">
+
+                                    <div>or</div>
+
+                                </div>
                                 <div className="d-flex gap-3 flex-column w-100 ">
                                     <a href="#!" className="btn bsb-btn-2xl btn-outline-dark rounded-0 d-flex align-items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-google text-danger" viewBox="0 0 16 16">
@@ -170,7 +172,6 @@ function ForgotPassword() {
                 </div>
             </div>
         </section>
-
     );
 }
 
