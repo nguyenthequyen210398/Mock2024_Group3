@@ -38,7 +38,7 @@ function Nav() {
           id="part-1"
           style={{
             width: '100vw',
-            height: '350vh',
+            height: '150vh',
             textAlign: 'center',
             background: 'rgba(0,255,0,0.02)',
           }}
@@ -49,7 +49,7 @@ function Nav() {
           id="part-2"
           style={{
             width: '100vw',
-            height: '350vh',
+            height: '150vh',
             textAlign: 'center',
             background: 'rgba(0,0,255,0.02)',
           }}
@@ -58,7 +58,7 @@ function Nav() {
           id="part-3"
           style={{
             width: '100vw',
-            height: '100vh',
+            height: '50vh',
             textAlign: 'center',
             background: '#FFFBE9',
           }}
