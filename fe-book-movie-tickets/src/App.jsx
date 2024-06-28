@@ -1,6 +1,7 @@
 
 
 import HomePage from './pages/main/HomePage';
+import TicketMana from "./pages/ticket/TicketMana.jsx";
 
 function App() {
 
@@ -10,7 +11,7 @@ function App() {
       {/* <ErrorPage /> */}
       {/* <Footer /> */}
       {/* <Header /> */}
-      <HomePage />
+      <TicketMana />
 
     </>
   );
