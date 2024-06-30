@@ -12,6 +12,7 @@ import SignIn from './pages/auth/SignIn.jsx'
 import ForgotPassword from './pages/auth/ForgotPassword.jsx'
 import SignUp from './pages/auth/SignUp.jsx'
 import App from './App.jsx'
+import MovieDetails from './components/MovieDetails.jsx'
 
 const router = createBrowserRouter([
 
@@ -20,7 +21,6 @@ const router = createBrowserRouter([
     element: <HomePage />,
     errorElement: <ErrorPage />,
     children: [
-
     ],
 
   },
@@ -45,6 +45,10 @@ const router = createBrowserRouter([
   {
     path: '/test',
     element: <App />
+  },
+  {
+    path: '/movie/:id',
+    element: <MovieDetails />,
   },
 
 
