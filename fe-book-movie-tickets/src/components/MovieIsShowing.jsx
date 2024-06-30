@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import '../../src/main.scss';
 import { useGetListDataAPI } from '../api/cinemaApi';
+import { toDay } from '../utils/date';
 function MovieIsShowing() {
 
     const [movies, Setmovies] = useGetListDataAPI(`https://66794dd518a459f6394f1eec.mockapi.io/cinema`);
+    const movieIsShowing = movies.filter(item => item.releaseDate <= toDay)
 
     const [showOverlay, setShowOverlay] = useState(false);
     const [currentMovie, setCurrentMovie] = useState(null);
@@ -22,9 +24,8 @@ function MovieIsShowing() {
         console.log(`Đã mua vé cho phim: ${movies.title}`);
     };
 
-    const handleWatchTrailer = () => {
-        // Xử lý khi người dùng click vào nút xem trailer
-        console.log(`Đang xem trailer của phim: ${movies.title}`);
+    const handleWatchTrailer = (trailerUrl) => {
+        window.open(trailerUrl, '_blank'); // Mở trang trailer YouTube trong cửa sổ/tab mới
     };
 
     const handleViewDetails = () => {
@@ -41,7 +42,7 @@ function MovieIsShowing() {
                 <h2>Phim đang chiếu</h2>
 
                 <div className="movie-list">
-                    {movies.map((movie, index) => (
+                    {movieIsShowing.map((movie, index) => (
                         <div
                             key={index}
                             className="movie-item"
@@ -52,7 +53,7 @@ function MovieIsShowing() {
                             {showOverlay && currentMovie === movie && (
                                 <div className="overlay">
                                     <button onClick={handleBuyTicket}>Mua vé</button>
-                                    <button onClick={handleWatchTrailer}>Trailer</button>
+                                    <button onClick={() => handleWatchTrailer(movie.trailer)}>Trailer</button>
                                     <button onClick={handleViewDetails}>Xem chi tiết</button>
                                 </div>
                             )}

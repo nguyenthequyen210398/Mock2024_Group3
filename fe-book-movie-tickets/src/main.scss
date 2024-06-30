@@ -1,8 +1,8 @@
 *{
-    margin: 0;
-    padding: 0;
-    // box-sizing: border-box;
-    
+  margin: 0;
+  padding: 0;
+  
+  
 }
 
 // .header {
@@ -34,7 +34,7 @@
 
 // }
 // footer {
-  
+
 //     bottom: 0;
 //     left: 0;
 //     height: 60px;
@@ -48,192 +48,197 @@
 //     border-top: 1px solid rgb(184, 180, 171);
 // }
 .header {
-    position: fixed; /* Đặt header ở vị trí cố định */
-    top: 0; /* Đặt header ở đỉnh trang */
-    left: 0;
-    width: 100%; /* Chiều rộng header chiếm toàn bộ phần width của trang */
-    height: 100px;
-    background-color: white;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 10px;
-    z-index: 1000; /* Đặt z-index cao hơn các phần tử khác để header hiển thị trước mọi thứ */
+  position: fixed; /* Đặt header ở vị trí cố định */
+  top: 0; /* Đặt header ở đỉnh trang */
+  left: 0;
+  width: 100%; /* Chiều rộng header chiếm toàn bộ phần width của trang */
+  height: 100px;
+  background-color: white;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px;
+  z-index: 1000; /* Đặt z-index cao hơn các phần tử khác để header hiển thị trước mọi thứ */
 
-      
-  .header__logo img {
-    height: 100px; /* Điều chỉnh chiều cao của logo */
-  }
-
-  .header__login button {
-    background-color: #007bff; /* Màu nền của nút */
-    color: #fff; /* Màu chữ của nút */
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px; /* Bo góc nút */
-    transition: background-color 0.3s ease; /* Hiệu ứng màu nền khi hover */
-  }
-  
-  .header__login button:hover {
-    background-color: #0056b3; /* Màu nền khi hover vào nút */
-  }
+    
+.header__logo img {
+  height: 100px; /* Điều chỉnh chiều cao của logo */
 }
 
-body {
-  margin-top: 100px;
-  display: block;
+.header__login button {
+  background-color: #007bff; /* Màu nền của nút */
+  color: #fff; /* Màu chữ của nút */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px; /* Bo góc nút */
+  transition: background-color 0.3s ease; /* Hiệu ứng màu nền khi hover */
+}
 
-  // #demo {
-  //   height: 300px;
-  //   .carousel.slide{      
-  //     .carousel-inner{
-  //       .carousel-item.active{
-  //         .d-block{
-  //           height:300px
-  //         }
-  //       }
-  //     }
-  
-     
-  //     height: 300px;
-  //   }
-  // }
-  
-  }
+.header__login button:hover {
+  background-color: #0056b3; /* Màu nền khi hover vào nút */
+}
+}
+
+
+body {
+margin-top: 100px;
+display: block;
+
+// #demo {
+//   height: 300px;
+//   .carousel.slide{      
+//     .carousel-inner{
+//       .carousel-item.active{
+//         .d-block{
+//           height:300px
+//         }
+//       }
+//     }
+
+   
+//     height: 300px;
+//   }
+// }
+
+
+
+}
 /* Footer.css */
 
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 50px 0;
-  text-align: center;
 
-  .footer-container {
-    display: flex;
-    justify-content: space-around;
-    max-width: 1200px;
-    margin: 0 auto;
+footer {
+
+background-color: #333;
+color: #fff;
+padding: 50px 0;
+text-align: center;
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1;
+  padding: 0 20px;
+
+  h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 5px;
+  }
+  p {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
   }
 
-  .footer-section {
-    flex: 1;
-    padding: 0 20px;
-
-    h4 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #fff;
-      padding-bottom: 5px;
-    }
-    p {
-      font-size: 0.9rem;
-      margin-bottom: 10px;
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-       
-        li{
-          a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-          }
-
-          a:hover {
-            color: #ffcc00;
-          }
-
+  ul {
+    list-style-type: none;
+    padding: 0;
+     
+      li{
+        a {
+          color: #fff;
+          text-decoration: none;
+          transition: color 0.3s ease;
         }
 
-      
-    }
+        a:hover {
+          color: #ffcc00;
+        }
+
+      }
+
     
-
   }
+  
 
-  .footer-bottom {
-    margin-top: 20px;
-    padding-top: 10px;
-    border-top: 1px solid #fff;
-    font-size: 0.8rem;
-  }
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #fff;
+  font-size: 0.8rem;
+}
 }
 
 .movie-showing {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 20px;
+max-width: 100%;
+margin: 0 auto;
+padding: 20px;
 }
 
 .movie-showing h2 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: #35c6e3;
+font-size: 1.8rem;
+margin-bottom: 15px;
+color: #35c6e3;
 }
 
 .movie-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Thiết lập lưới với tối đa 4 phần tử trên mỗi dòng */
+gap: 20px; /* Khoảng cách giữa các phần tử */
 }
 
 .movie-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+position: relative;
+overflow: hidden;
+border-radius: 5px;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s ease;
 }
 
 .movie-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 5px;
+width: 100%;
+height: auto;
+display: block;
+border-radius: 5px;
 }
 
 .overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: rgba(0, 0, 0, 0.8);
+padding: 5px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+opacity: 0;
+transition: opacity 0.3s ease;
 }
 
 .movie-item:hover .overlay {
-  opacity: 1;
+opacity: 1;
 }
 
 .overlay button {
-  margin: 5px;
-  padding: 5px 5px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+margin: 5px;
+padding: 5px 5px;
+background-color: #007bff;
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease;
 }
 
 .overlay button:hover {
-  background-color: #0056b3;
+background-color: #0056b3;
 }
 
 .movie-title {
-  text-align: center;
-  margin: 10px 0;
-  font-size: 1.2rem;
-  color: #333;
+text-align: center;
+margin: 10px 0;
+font-size: 1.2rem;
+color: #333;
 }
