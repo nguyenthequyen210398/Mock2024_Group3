@@ -11,10 +11,6 @@ function MovieIsShowing() {
         window.open(trailerUrl, '_blank'); // Open YouTube trailer in a new window/tab
     };
 
-    const handleBuyTicket = (movie) => {
-        console.log(`Đã mua vé cho phim: ${movie.title}`);
-        // Additional logic to handle ticket purchase can be added here
-    };
 
     return (
         <>
@@ -28,8 +24,7 @@ function MovieIsShowing() {
                             <p className="movie-title">{movie.title}</p>
                             <div className="overlay">
                                 <button onClick={() => handleWatchTrailer(movie.trailer)}>Trailer</button>
-                                <button onClick={() => handleBuyTicket(movie)}>Mua vé</button>
-                                {/* Use Link component for navigation */}
+                                <button><Link to={`/ticket-purchase/${movie.id}`} className="details-link">Mua vé</Link></button>
                                 <button><Link to={`/movie/${movie.id}`} className="details-link">Xem chi tiết</Link></button>
                             </div>
                         </div>
