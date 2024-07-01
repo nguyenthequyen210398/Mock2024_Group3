@@ -14,12 +14,16 @@ function Banner() {
                     <button type="button" data-bs-target="#demo" data-bs-slide-to="0" className="active"></button>
                     <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
                     <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
 
                 </div>
 
                 {/* <!-- The slideshow/carousel --> */}
                 <div className="carousel-inner">
                     <div className="carousel-item active">
+                        <img src="../../src/assets/img5.jpg" alt="Los " className="d-block" style={{ width: "100%" }} />
+                    </div>
+                    <div className="carousel-item">
                         <img src="../../src/assets/img1.jpg" alt="Los Angeles" className="d-block" style={{ width: "100%" }} />
                     </div>
                     <div className="carousel-item">
