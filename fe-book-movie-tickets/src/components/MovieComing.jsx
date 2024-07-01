@@ -28,9 +28,10 @@ function MovieComing() {
                             <p className="movie-title">{movie.title}</p>
                             <div className="overlay">
                                 <button onClick={() => handleWatchTrailer(movie.trailer)}>Trailer</button>
-                                <button onClick={() => handleBuyTicket(movie)}>Mua vé</button>
+
                                 {/* Use Link component for navigation */}
-                                <Link to={`/movie/${movie.id}`} className="details-link">Xem chi tiết</Link>
+                                <button><Link to={`/ticket-purchase/${movie.id}`} className="details-link">Mua vé</Link></button>
+                                <button><Link to={`/movie/${movie.id}`} className="details-link">Xem chi tiết</Link></button>
                             </div>
                         </div>
                     ))}

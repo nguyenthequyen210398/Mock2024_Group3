@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './main.scss'
+
 import HomePage from './pages/main/HomePage.jsx'
 import ErrorPage from './pages/ErrorPage.jsx'
 // import LogIn from './pages/auth/LogIn.jsx'
@@ -12,7 +12,8 @@ import SignIn from './pages/auth/SignIn.jsx'
 import ForgotPassword from './pages/auth/ForgotPassword.jsx'
 import SignUp from './pages/auth/SignUp.jsx'
 import App from './App.jsx'
-import MovieDetails from './components/MovieDetails.jsx'
+import MovieDetails from './pages/movie/MovieDetails.jsx'
+import TicketPurchase from './pages/ticket/TicketPurchase.jsx'
 
 const router = createBrowserRouter([
 
@@ -50,6 +51,12 @@ const router = createBrowserRouter([
     path: '/movie/:id',
     element: <MovieDetails />,
   },
+  {
+    path: '/ticket-purchase/:id',
+    element: <TicketPurchase />
+  },
+
+
 
 
 ])

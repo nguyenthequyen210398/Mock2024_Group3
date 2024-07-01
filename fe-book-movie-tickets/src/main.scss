@@ -1,52 +1,9 @@
 *{
   margin: 0;
   padding: 0;
-  
-  
+  box-sizing: border-box;
 }
 
-// .header {
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     height: 60px;
-//     background-color: white;
-//     width: 100%;
-//     display: flex;
-//     justify-content: center; 
-//     align-items: center;
-//     /* Mặc định row, muốn thay đổi thì flex-direction:*/
-//     /* justify-content ăn theo main axis, main axis ăn theo chiều flex */
-//     /* align-items ăn theo cross axis, cros axis vuông góc với main axis */
-
-//     font-weight: bold;
-//     font-size: 20px;
-//     border-bottom: 1px solid rgb(153, 149, 149);
-
-//     img{
-//         height: 100%;
-//         width: 100%;
-//     }
-// }
-// .slides {
-//     margin-top: 60px;
-//     background-color: aqua;
-
-// }
-// footer {
-
-//     bottom: 0;
-//     left: 0;
-//     height: 60px;
-//     background-color: white;
-//     width: 100%;
-//     display: flex;
-//     align-items: center;
-//     justify-content: space-around;
-//     text-align: center;
-//     font-weight: bold;
-//     border-top: 1px solid rgb(184, 180, 171);
-// }
 .header {
   position: fixed; /* Đặt header ở vị trí cố định */
   top: 0; /* Đặt header ở đỉnh trang */
@@ -86,24 +43,6 @@
 body {
 margin-top: 100px;
 display: block;
-
-// #demo {
-//   height: 300px;
-//   .carousel.slide{      
-//     .carousel-inner{
-//       .carousel-item.active{
-//         .d-block{
-//           height:300px
-//         }
-//       }
-//     }
-
-   
-//     height: 300px;
-//   }
-// }
-
-
 
 }
 /* Footer.css */
@@ -233,7 +172,7 @@ transition: background-color 0.3s ease;
 }
 
 .overlay button:hover {
-background-color: #0056b3;
+background-color: rgb(65, 238, 155);
 }
 
 .movie-title {
@@ -241,4 +180,8 @@ text-align: center;
 margin: 10px 0;
 font-size: 1.2rem;
 color: #333;
+}
+.details-link {
+  color: #ffffff;
+  text-decoration: none;
 }
