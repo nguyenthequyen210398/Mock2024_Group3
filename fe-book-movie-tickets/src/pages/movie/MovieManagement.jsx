@@ -46,7 +46,7 @@ function MovieManagement() {
         fetchMovies();
     }, [pageNo, pageSize, sortByType, sortDir]);
 
-    const fetchMovies = async () => {
+    const fetchMovies = async (search = '') => {
         setLoading(true);
         try {
             const response = await axios.get(`http://localhost:8080/api/v1/movies`, {
@@ -54,7 +54,8 @@ function MovieManagement() {
                     pageNo,
                     pageSize,
                     sortBy: sortByType,
-                    sortDir
+                    sortDir,
+                    search
                 }
             });
             setMovies(response.data.content);
@@ -133,8 +134,8 @@ function MovieManagement() {
     };
 
     const searchBy = () => {
-        // Implement search logic
         console.log(`Searching for ${search}`);
+        fetchMovies(search);
     };
     const addMovie = async () => {
         try {
