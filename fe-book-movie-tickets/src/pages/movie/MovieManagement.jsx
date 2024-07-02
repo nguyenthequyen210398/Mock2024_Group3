@@ -1,41 +1,55 @@
-import  { useState } from 'react';
 import Table from 'react-bootstrap/Table';
-import {Button, Modal, Card, Dropdown} from 'react-bootstrap';
+import { Button, Modal, Card, Dropdown } from 'react-bootstrap';
+import axios from 'axios';
+import {useEffect, useState} from "react";
+import Movie from "../../components/Movie.jsx";
 
-function Movie() {
-    const [selectedEmployee, setSelectedEmployee] = useState(null);
+function MovieManagement() {
+    const [movies, setMovies] = useState([]);
+    const [selectedMovie, setSelectedMovie] = useState(null);
     const [search, setSearch] = useState('');
     const [showEditModal, setShowEditModal] = useState(false);
     const [showDetailModal, setShowDetailModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [sortByType, setSortByType] = useState('Mặc định'); // Initial sort type
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    // Mock data, replace with your actual employee data
-    const employees = [
-        { id: 1, fullName: 'John Doe', username: 'johndoe', address: '123 Main St', age: 30 },
-        { id: 2, fullName: 'Jane Smith', username: 'janesmith', address: '456 Elm St', age: 25 }
-    ];
+    useEffect(() => {
+        fetchMovies();
+    }, []);
 
-    const openModalWithData = (emp) => {
-        setSelectedEmployee(emp);
+    const fetchMovies = async () => {
+        try {
+            const response = await axios.get('http://localhost:8080/api/v1/movies');
+            setMovies(response.data.content);
+            setLoading(false);
+        } catch (error) {
+            setError(error.message);
+            setLoading(false);
+        }
+    };
+
+    const openModalWithData = (movie) => {
+        setSelectedMovie(movie);
         setShowDetailModal(true);
     };
 
-    const openEditModal = (emp) => {
-        setSelectedEmployee(emp);
+    const openEditModal = (movie) => {
+        setSelectedMovie(movie);
         setShowEditModal(true);
     };
 
     const deleteById = (id) => {
         // Implement delete logic here
-        console.log(`Deleting employee with ID ${id}`);
+        console.log(`Deleting movie with ID ${id}`);
         // Close delete modal after deletion
         setShowDeleteModal(false);
     };
 
     const getPageNumbers = () => {
-        // Mock logic for pagination, replace with actual logic
-        return [1, 2, 3]; // Example: 3 pages
+        // Mock logic for pagination, replace with actual logic based on totalPages from API response
+        return [1]; // Example: 1 page
     };
 
     const prevPage = () => {
@@ -63,6 +77,14 @@ function Movie() {
         console.log(`Sorting by ${type}`);
         setSortByType(type);
     };
+
+    if (loading) {
+        return <p>Loading...</p>; // Optional: Show a loading indicator
+    }
+
+    if (error) {
+        return <p>Error: {error}</p>; // Optional: Show an error message
+    }
 
     return (
         <div className="container mt-5">
@@ -95,33 +117,35 @@ function Movie() {
                         </div>
                     </div>
 
-                    {/* Employee Table */}
+                    {/* Movie Table */}
                     <Table striped bordered hover className="mt-4">
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Full Name</th>
-                            <th>User name</th>
-                            <th>Address</th>
-                            <th>Age</th>
-                            <th>Action</th>
+                            <th>Name</th>
+                            <th>Release Year</th>
+                            <th>Description</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {employees.map(emp => (
-                            <tr key={emp.id}>
-                                <td>{emp.id}</td>
-                                <td>{emp.fullName}</td>
-                                <td>{emp.username}</td>
-                                <td>{emp.address}</td>
-                                <td>{emp.age}</td>
-                                <td>
-                                    <Button onClick={() => openModalWithData(emp)} variant="light">View</Button>
-                                    <Button onClick={() => openEditModal(emp)} variant="primary" style={{ marginLeft: '10px' }}>Edit</Button>
-                                    <Button onClick={() => setSelectedEmployee(emp) && setShowDeleteModal(true)} variant="danger" style={{ marginLeft: '10px' }}>Delete</Button>
-                                </td>
+                        {movies?.length > 0 ? (
+                            movies.map(movie => (
+                                <Movie
+                                    key={movie.id}
+                                    movie={movie}
+                                    openModalWithData={openModalWithData}
+                                    openEditModal={openEditModal}
+                                    setSelectedMovie={setSelectedMovie}
+                                    setShowDeleteModal={setShowDeleteModal}
+                                    deleteById={deleteById}
+                                />
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="5" className="text-center">No movies found</td>
                             </tr>
-                        ))}
+                        )}
                         </tbody>
                     </Table>
 
@@ -141,42 +165,48 @@ function Movie() {
             {/* Edit Modal */}
             <Modal show={showEditModal} onHide={() => setShowEditModal(false)}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Edit An Employee</Modal.Title>
+                    <Modal.Title>Edit Movie</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-
+                    {/* Form for editing movie details */}
+                    <p>Implement edit form here</p>
                 </Modal.Body>
             </Modal>
 
             {/* Detail Modal */}
             <Modal show={showDetailModal} onHide={() => setShowDetailModal(false)}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Employee: {selectedEmployee?.id}</Modal.Title>
+                    <Modal.Title>Movie Details: {selectedMovie?.name}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-
+                    {/* Display movie details */}
+                    <p>ID: {selectedMovie?.id}</p>
+                    <p>Name: {selectedMovie?.name}</p>
+                    <p>Release Year: {selectedMovie?.releaseYear}</p>
+                    <p>Description: {selectedMovie?.description}</p>
+                    {/* Add other fields as needed */}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => setShowDetailModal(false)}>Close</Button>
-                    <Button variant="primary" onClick={() => { setShowEditModal(true); setShowDetailModal(false); }}>Update</Button>
+                    <Button variant="primary" onClick={() => { setShowEditModal(true); setShowDetailModal(false); }}>Edit</Button>
                 </Modal.Footer>
             </Modal>
 
             {/* Delete Modal */}
             <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)} backdrop="static" keyboard={false}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Delete An Employee</Modal.Title>
+                    <Modal.Title>Delete Movie</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Do you want to delete the employee: {selectedEmployee?.fullName}
+                    Do you want to delete the movie: {selectedMovie?.name}?
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>Close</Button>
-                    <Button variant="danger" onClick={() => { deleteById(selectedEmployee?.id); setShowDeleteModal(false); }}>Delete</Button>
+                    <Button variant="danger" onClick={() => { deleteById(selectedMovie?.id); setShowDeleteModal(false); }}>Delete</Button>
                 </Modal.Footer>
             </Modal>
         </div>
     );
 }
 
-export default Movie;
+export default MovieManagement;

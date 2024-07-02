@@ -10,7 +10,7 @@ import TicketMana from "./pages/ticket/TicketMana.jsx";
 import SignIn from "./pages/auth/SignIn.jsx";
 import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
 import SignUp from "./pages/auth/SignUp.jsx";
-import Movie from "./pages/movie/Movie.jsx";
+import MovieManagement from "./pages/movie/MovieManagement.jsx";
 
 const router = createBrowserRouter([
 
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/movie-management',
-    element: <Movie />
+    element: <MovieManagement />
   },
   {
     path: '/sign-in',
