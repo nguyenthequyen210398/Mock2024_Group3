@@ -34,7 +34,7 @@ public class MovieController {
     }
 
     @PostMapping
-    public void create(@RequestBody @Valid MovieCreateForm form) {
+    public void create(@RequestBody MovieCreateForm form) {
         service.create(form);
     }
 
