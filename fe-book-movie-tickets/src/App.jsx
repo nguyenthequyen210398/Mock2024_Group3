@@ -13,6 +13,7 @@ function App() {
       {/* <Footer /> */}
       {/* <Header /> */}
       <Movie />
+      {/* <TicketMana /> */}
 
     </>
   );
