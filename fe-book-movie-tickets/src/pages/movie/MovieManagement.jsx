@@ -18,6 +18,8 @@ function MovieManagement() {
     const [pageNo, setPageNo] = useState(0);
     const [pageSize, setPageSize] = useState(10);
     const [totalPages, setTotalPages] = useState(1);
+    const [currentSort, setCurrentSort] = useState('Sort By'); // Add state to manage current sort display
+
 
     // State for new movie fields
     const [newMovieName, setNewMovieName] = useState('');
@@ -116,7 +118,12 @@ function MovieManagement() {
             setError(error.message);
         }
     };
-
+    const handleSortChange = (sortBy, sortDir) => {
+        setSortByType(sortBy);
+        setSortDir(sortDir);
+        setCurrentSort(`${sortBy.charAt(0).toUpperCase() + sortBy.slice(1)} ${sortDir === 'asc' ? 'Ascending' : 'Descending'}`);
+        fetchMovies(search, sortBy, sortDir);
+    };
     const prevPage = () => {
         if (pageNo > 0) {
             setPageNo(pageNo - 1);
@@ -188,12 +195,15 @@ function MovieManagement() {
                                 {/* Sort button */}
                                 <Dropdown>
                                     <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                        Sort By
+                                        {currentSort}
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleSortChange('id', 'asc')}>Id Ascending</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleSortChange('id', 'desc')}>Id Descending</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleSortChange('name', 'asc')}>Name Ascending</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleSortChange('name', 'desc')}>Name Descending</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleSortChange('releaseYear', 'asc')}>Release Year Ascending</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => handleSortChange('releaseYear', 'desc')}>Release Year Descending</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </div>
@@ -555,20 +565,19 @@ function MovieManagement() {
             </Modal>
 
             {/* Detail Modal */}
-            <Modal show={showDetailModal} onHide={() => setShowDetailModal(false)}>
+            <Modal show={showDetailModal} onHide={() => setShowDetailModal(false)} centered>
                 <Modal.Header closeButton>
                     <Modal.Title>Movie Details: {selectedMovie?.name}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                    {/* Display movie details */}
-                    <p>ID: {selectedMovie?.id}</p>
-                    <p>Name: {selectedMovie?.name}</p>
-                    <p>Release Year: {selectedMovie?.releaseYear}</p>
-                    <p>Description: {selectedMovie?.description}</p>
-                    <p>Rating: {selectedMovie?.rating}</p>
-                    <p>Starring: {selectedMovie?.starring}</p>
-                    <p>Directed By: {selectedMovie?.directedBy}</p>
-                    <p>Production Company: {selectedMovie?.productionCompany}</p>
+                <Modal.Body className="text-start">
+                    <p><strong>ID:</strong> {selectedMovie?.id}</p>
+                    <p><strong>Name:</strong> {selectedMovie?.name}</p>
+                    <p><strong>Release Year:</strong> {selectedMovie?.releaseYear}</p>
+                    <p><strong>Description:</strong> {selectedMovie?.description}</p>
+                    <p><strong>Rating:</strong> {selectedMovie?.rating}</p>
+                    <p><strong>Starring:</strong> {selectedMovie?.starring}</p>
+                    <p><strong>Directed By:</strong> {selectedMovie?.directedBy}</p>
+                    <p><strong>Production Company:</strong> {selectedMovie?.productionCompany}</p>
                     {/* Add other fields as needed */}
                 </Modal.Body>
                 <Modal.Footer>
@@ -586,6 +595,8 @@ function MovieManagement() {
                     </Button>
                 </Modal.Footer>
             </Modal>
+
+
 
             {/* Delete Modal */}
             <Modal
