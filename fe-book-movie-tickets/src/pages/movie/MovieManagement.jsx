@@ -34,6 +34,8 @@ function MovieManagement() {
     const [newMovieStatus, setNewMovieStatus] = useState('');
     const [newMovieRunningTime, setNewMovieRunningTime] = useState('');
     const [newMovieScreenplayBy, setNewMovieScreenplayBy] = useState('');
+    const [newMovieImgLink, setNewMovieImgLink] = useState('');
+
 
     // State for updated movie fields
     const [updatedMovieName, setUpdatedMovieName] = useState('');
@@ -43,6 +45,9 @@ function MovieManagement() {
     const [updatedMovieStarring, setUpdatedMovieStarring] = useState('');
     const [updatedMovieDirectedBy, setUpdatedMovieDirectedBy] = useState('');
     const [updatedMovieProductionCompany, setUpdatedMovieProductionCompany] = useState('');
+    const [updatedMovieImgLink, setUpdatedMovieImgLink] = useState('');
+
+
 
     useEffect(() => {
         fetchMovies();
@@ -85,6 +90,7 @@ function MovieManagement() {
         setUpdatedMovieStarring(movie.starring);
         setUpdatedMovieDirectedBy(movie.directedBy);
         setUpdatedMovieProductionCompany(movie.productionCompany);
+        setUpdatedMovieImgLink(movie.imgLink)
     };
 
     const deleteById = async (id) => {
@@ -108,7 +114,7 @@ function MovieManagement() {
                 starring: updatedMovieStarring,
                 directedBy: updatedMovieDirectedBy,
                 productionCompany: updatedMovieProductionCompany,
-                // Add other fields for the updated movie as needed
+                imgLink: updatedMovieImgLink
             });
             const updatedMovie = response.data;
             // Update the movie in the local state
@@ -159,6 +165,7 @@ function MovieManagement() {
                 status: newMovieStatus,
                 runningTime: newMovieRunningTime,
                 screenplayBy: newMovieScreenplayBy,
+                imgLink: newMovieImgLink
                 // Add other fields for the new movie as needed
             });
             const newMovie = response.data;
@@ -239,6 +246,7 @@ function MovieManagement() {
                             <th>Starring</th>
                             <th>Directed By</th>
                             <th>Production Company</th>
+                            <th>img</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -303,11 +311,21 @@ function MovieManagement() {
                             />
                         </div>
                         <div className="mb-3">
+                            <label htmlFor="formFileSm" className="form-label"> Image</label>
+                            <input className="form-control form-control-sm"
+                                   id="newMovieImgLink"
+                                   value={newMovieImgLink}
+                                   onChange={(e) => setNewMovieImgLink(e.target.value)}
+                                   type="file"/>
+                        </div>
+
+
+                        <div className="mb-3">
                             <label htmlFor="newMovieReleaseYear" className="form-label">
                                 Release Year
                             </label>
                             <input
-                                type="text"
+                                type="datetime-local"
                                 className="form-control"
                                 id="newMovieReleaseYear"
                                 value={newMovieReleaseYear}
@@ -478,6 +496,18 @@ function MovieManagement() {
                             />
                         </div>
                         <div className="mb-3">
+                            <label htmlFor="updatedMovieName" className="form-label">
+                                Img
+                            </label>
+                            <input
+                                type="url"
+                                className="form-control"
+                                id="updatedMovieImgLink"
+                                value={updatedMovieImgLink}
+                                onChange={(e) => setUpdatedMovieImgLink(e.target.value)}
+                            />
+                        </div>
+                        <div className="mb-3">
                             <label htmlFor="updatedMovieReleaseYear" className="form-label">
                                 Release Year
                             </label>
@@ -570,6 +600,11 @@ function MovieManagement() {
                     <Modal.Title>Movie Details: {selectedMovie?.name}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="text-start">
+                    {selectedMovie?.imgLink && (
+                        <div className="mt-3">
+                            <img src={selectedMovie.imgLink} alt="Movie Poster" style={{ maxWidth: '100%', maxHeight: '400px' }} />
+                        </div>
+                    )}
                     <p><strong>ID:</strong> {selectedMovie?.id}</p>
                     <p><strong>Name:</strong> {selectedMovie?.name}</p>
                     <p><strong>Release Year:</strong> {selectedMovie?.releaseYear}</p>
@@ -578,7 +613,6 @@ function MovieManagement() {
                     <p><strong>Starring:</strong> {selectedMovie?.starring}</p>
                     <p><strong>Directed By:</strong> {selectedMovie?.directedBy}</p>
                     <p><strong>Production Company:</strong> {selectedMovie?.productionCompany}</p>
-                    {/* Add other fields as needed */}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => setShowDetailModal(false)}>
