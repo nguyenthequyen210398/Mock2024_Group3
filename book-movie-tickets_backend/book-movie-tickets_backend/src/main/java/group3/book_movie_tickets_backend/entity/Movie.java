@@ -17,10 +17,9 @@ public class Movie {
     private Integer id;
     @Column
     private String name;
+
     @Column
-    private int year;
-    @Column
-    private String origin;
+    private LocalDateTime releaseYear;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "type_id", referencedColumnName = "id")
@@ -45,5 +44,30 @@ public class Movie {
     @OneToMany(mappedBy = "movie")
     private List<Showtimes> showtimesList;
 
+    @Column
+    private double rating;
 
+    @Column
+    private String starring; // Diễn viên chính
+
+    @Column
+    private String directedBy; //đạo diễn
+
+    @Column
+    private String productionCompany; // công ty sản xuất
+
+    @Column
+    private String country;
+
+    @Column
+    private String language;
+
+    @Column
+    private String ScreenplayBy;  // biên kịch
+
+    @Column
+    private int status;
+
+    @Column
+    private int RunningTime;  // thời lượng
 }
