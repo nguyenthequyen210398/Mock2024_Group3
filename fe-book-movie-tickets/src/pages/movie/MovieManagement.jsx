@@ -10,10 +10,14 @@ function MovieManagement() {
     const [showEditModal, setShowEditModal] = useState(false);
     const [showDetailModal, setShowDetailModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const [showAddModal, setShowAddModal] = useState(false); // State for Add Movie Modal
-    const [sortByType, setSortByType] = useState('Mặc định'); // Initial sort type
+    const [showAddModal, setShowAddModal] = useState(false);
+    const [sortByType, setSortByType] = useState('id');
+    const [sortDir, setSortDir] = useState('asc');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [pageNo, setPageNo] = useState(0);
+    const [pageSize, setPageSize] = useState(10);
+    const [totalPages, setTotalPages] = useState(1);
 
     // State for new movie fields
     const [newMovieName, setNewMovieName] = useState('');
@@ -40,12 +44,21 @@ function MovieManagement() {
 
     useEffect(() => {
         fetchMovies();
-    }, []);
+    }, [pageNo, pageSize, sortByType, sortDir]);
 
     const fetchMovies = async () => {
+        setLoading(true);
         try {
-            const response = await axios.get('http://localhost:8080/api/v1/movies');
+            const response = await axios.get(`http://localhost:8080/api/v1/movies`, {
+                params: {
+                    pageNo,
+                    pageSize,
+                    sortBy: sortByType,
+                    sortDir
+                }
+            });
             setMovies(response.data.content);
+            setTotalPages(response.data.totalPages);
             setLoading(false);
         } catch (error) {
             setError(error.message);
@@ -103,37 +116,26 @@ function MovieManagement() {
         }
     };
 
-    const getPageNumbers = () => {
-        // Mock logic for pagination, replace with actual logic based on totalPages from API response
-        return [1]; // Example: 1 page
-    };
-
     const prevPage = () => {
-        // Implement previous page logic
-        console.log('Previous page');
+        if (pageNo > 0) {
+            setPageNo(pageNo - 1);
+        }
     };
 
     const nextPage = () => {
-        // Implement next page logic
-        console.log('Next page');
+        if (pageNo < totalPages - 1) {
+            setPageNo(pageNo + 1);
+        }
     };
 
     const gotoPage = (pageNum) => {
-        // Implement go to page logic
-        console.log(`Go to page ${pageNum}`);
+        setPageNo(pageNum - 1);
     };
 
     const searchBy = () => {
         // Implement search logic
         console.log(`Searching for ${search}`);
     };
-
-    const sortTableBy = (type, field, order) => {
-        // Implement sorting logic
-        console.log(`Sorting by ${type}`);
-        setSortByType(type);
-    };
-
     const addMovie = async () => {
         try {
             const response = await axios.post('http://localhost:8080/api/v1/movies', {
@@ -253,27 +255,19 @@ function MovieManagement() {
                     </table>
 
                     {/* Pagination */}
-                    <nav aria-label="BSB Pagination 1 Example">
-                        <ul className="pagination justify-content-center">
-                            <li className="page-item">
-                                <a className="page-link" onClick={prevPage}>
-                                    Previous
-                                </a>
-                            </li>
-                            {getPageNumbers().map((i) => (
-                                <li key={i} className={`page-item ${i === 1 ? 'active' : ''}`}>
-                                    <a className="page-link" onClick={() => gotoPage(i)}>
-                                        {i}
-                                    </a>
-                                </li>
-                            ))}
-                            <li className="page-item">
-                                <a className="page-link" onClick={nextPage}>
-                                    Next
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <div className="d-flex justify-content-center mt-4">
+                        <Button onClick={prevPage} disabled={pageNo === 0}>Previous</Button>
+                        {[...Array(totalPages).keys()].map((pageNum) => (
+                            <Button
+                                key={pageNum}
+                                onClick={() => gotoPage(pageNum + 1)}
+                                active={pageNum === pageNo}
+                            >
+                                {pageNum + 1}
+                            </Button>
+                        ))}
+                        <Button onClick={nextPage} disabled={pageNo >= totalPages - 1}>Next</Button>
+                    </div>
                 </Card.Body>
             </Card>
 
