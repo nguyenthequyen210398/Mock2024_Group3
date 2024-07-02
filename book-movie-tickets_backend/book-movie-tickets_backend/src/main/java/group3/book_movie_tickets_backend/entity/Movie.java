@@ -5,6 +5,7 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -18,16 +19,14 @@ public class Movie {
     @Column
     private String name;
     @Column
-    private int year;
-    @Column
-    private String origin;
+    private Date releaseDate; //ngay sx
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "type_id", referencedColumnName = "id")
     private MovieTypes type;
 
     @Column
-    private String description;
+    private String description;// mo ta
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
@@ -39,8 +38,26 @@ public class Movie {
 
     @Column
     private int created_by;
+
     @Column
     private int updated_by;
+
+    @Column
+    private String url;
+    @Column
+    private String country;
+    @Column
+    private String duration; // thoi luong
+    @Column
+    private String director;//dao dien
+
+
+
+
+
+
+
+
 
     @OneToMany(mappedBy = "movie")
     private List<Showtimes> showtimesList;

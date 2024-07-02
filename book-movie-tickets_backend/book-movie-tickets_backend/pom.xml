@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>group3</groupId>
-	<artifactId>book-movie-tickets_backend</artifactId>
+	<artifactId>bansaocode</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>book-movie-tickets_backend</name>
 	<description>Demo project for Spring Boot</description>
