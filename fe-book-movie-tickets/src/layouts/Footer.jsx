@@ -20,9 +20,9 @@ function Footer() {
           <h4>Liên kết nhanh</h4>
           <ul>
             <li><a href="/">Trang chủ</a></li>
-            <li><a href="/phim-dang-chieu">Phim đang chiếu</a></li>
-            <li><a href="/phim-sap-chieu">Phim sắp chiếu</a></li>
-            <li><a href="/lien-he">Liên hệ</a></li>
+            <li><a href="/#phim-dang-chieu">Phim đang chiếu</a></li>
+            <li><a href="/#phim-sap-chieu">Phim sắp chiếu</a></li>
+            <li><a href="https://www.facebook.com/quyennt47/">Liên hệ</a></li>
           </ul>
         </div>
       </div>

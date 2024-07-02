@@ -16,13 +16,13 @@ function Nav() {
           direction="horizontal"
           items={[
             {
-              key: 'part-1',
-              href: '#part-1',
+              key: 'phim-dang-chieu',
+              href: '#phim-dang-chieu',
               title: 'Phim đang chiếu',
             },
             {
-              key: 'part-2',
-              href: '#part-2',
+              key: 'phim-sap-chieu',
+              href: '#phim-sap-chieu',
               title: 'Phim sắp chiếu',
             },
             {
@@ -35,7 +35,7 @@ function Nav() {
       </div>
       <div>
         <div
-          id="part-1"
+          id="phim-dang-chieu"
           style={{
             width: '100vw',
             height: '80vh',
@@ -46,7 +46,7 @@ function Nav() {
 
 
         <div
-          id="part-2"
+          id="phim-sap-chieu"
           style={{
             width: '100vw',
             height: '80vh',
