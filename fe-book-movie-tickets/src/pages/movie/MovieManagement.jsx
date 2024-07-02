@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Modal, Card, Dropdown } from 'react-bootstrap';
+import {Button, Modal, Card, Dropdown, Nav} from 'react-bootstrap';
 import axios from 'axios';
 import Movie from '../../components/Movie.jsx';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function MovieManagement() {
     const [movies, setMovies] = useState([]);
@@ -186,109 +187,131 @@ function MovieManagement() {
     }
 
     return (
-        <div className="container mt-5">
-            <Card className="col-10 mx-auto">
-                <Card.Body>
-                    <Card.Title className="text-center fs-1 mb-4">Movie List</Card.Title>
-                    {/* Add Movie Button */}
-                    <div className="text-end mb-3">
-                        <Button variant="success" onClick={() => setShowAddModal(true)}>
-                            Add New Movie
-                        </Button>
-                    </div>
-                    <div className="container">
-                        <div className="row my-4">
-                            <div className="col-6 p-0">
-                                {/* Sort button */}
-                                <Dropdown>
-                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                        {currentSort}
-                                    </Dropdown.Toggle>
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item onClick={() => handleSortChange('id', 'asc')}>Id Ascending</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handleSortChange('id', 'desc')}>Id Descending</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handleSortChange('name', 'asc')}>Name Ascending</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handleSortChange('name', 'desc')}>Name Descending</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handleSortChange('releaseYear', 'asc')}>Release Year Ascending</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => handleSortChange('releaseYear', 'desc')}>Release Year Descending</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
+        <div className="mt-0">
+            <div className="row mt-0">
+                <div className="col-2 p-2 d-flex flex-column vh-100">
+                    {/* Left Sidebar/Menu */}
+                    <Nav className="flex-column  p-3 shadow-sm rounded vh-100">
+
+                        <Nav.Link href="#" className="text-dark mb-2" onClick={() => console.log('Menu Item 1 clicked')}>
+                            <i className="bi bi-speedometer2 me-2"></i> Dashboard
+                        </Nav.Link>
+                        <Nav.Link href="/movie-management" className="text-dark mb-2" >
+                            <i className="bi bi-film me-2"></i> Movie
+                        </Nav.Link>
+                        <Nav.Link href="#" className="text-dark mb-2" onClick={() => console.log('Menu Item 3 clicked')}>
+                            <i className="bi bi-ticket me-2"></i> Ticket
+                        </Nav.Link>
+                        {/* Add more menu items as needed */}
+                    </Nav>
+                </div>
+
+                <div className="col-10">
+                    <Card className="col-10 mx-auto">
+                        <Card.Body>
+                            <Card.Title className="text-center fs-1 mb-4">Movie List</Card.Title>
+                            {/* Add Movie Button */}
+                            <div className="text-end mb-3">
+                                <Button variant="success" onClick={() => setShowAddModal(true)}>
+                                    Add New Movie
+                                </Button>
                             </div>
-                            <div className="col-6 p-0">
-                                {/* Search Bar */}
-                                <div className="input-group">
-                                    <input
-                                        type="search"
-                                        className="form-control "
-                                        placeholder="Search"
-                                        aria-label="Search"
-                                        aria-describedby="search-addon"
-                                        value={search}
-                                        onChange={(e) => setSearch(e.target.value)}
-                                    />
-                                    <Button onClick={searchBy} className="btn btn-sm btn-primary">
-                                        Search
-                                    </Button>
+                            <div className="container mx-auto">
+                                <div className="row my-4">
+                                    <div className="col-6 p-0">
+                                        {/* Sort button */}
+                                        <Dropdown>
+                                            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                                                {currentSort}
+                                            </Dropdown.Toggle>
+                                            <Dropdown.Menu>
+                                                <Dropdown.Item onClick={() => handleSortChange('id', 'asc')}>Id Ascending</Dropdown.Item>
+                                                <Dropdown.Item onClick={() => handleSortChange('id', 'desc')}>Id Descending</Dropdown.Item>
+                                                <Dropdown.Item onClick={() => handleSortChange('name', 'asc')}>Name Ascending</Dropdown.Item>
+                                                <Dropdown.Item onClick={() => handleSortChange('name', 'desc')}>Name Descending</Dropdown.Item>
+                                                <Dropdown.Item onClick={() => handleSortChange('releaseYear', 'asc')}>Release Year Ascending</Dropdown.Item>
+                                                <Dropdown.Item onClick={() => handleSortChange('releaseYear', 'desc')}>Release Year Descending</Dropdown.Item>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+                                    </div>
+                                    <div className="col-6 p-0">
+                                        {/* Search Bar */}
+                                        <div className="input-group">
+                                            <input
+                                                type="search"
+                                                className="form-control "
+                                                placeholder="Search"
+                                                aria-label="Search"
+                                                aria-describedby="search-addon"
+                                                value={search}
+                                                onChange={(e) => setSearch(e.target.value)}
+                                            />
+                                            <Button onClick={searchBy} className="btn btn-sm btn-primary">
+                                                Search
+                                            </Button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    {/* Movie Table */}
-                    <table className="table  table-bordered mt-4">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Release Year</th>
-                            <th>Description</th>
-                            <th>Rating</th>
-                            <th>Starring</th>
-                            <th>Directed By</th>
-                            <th>Production Company</th>
-                            <th>img</th>
-                            <th>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {movies.length > 0 ? (
-                            movies.map((movie) => (
-                                <Movie
-                                    key={movie.id}
-                                    movie={movie}
-                                    openModalWithData={openModalWithData}
-                                    openEditModal={openEditModal}
-                                    setSelectedMovie={setSelectedMovie}
-                                    setShowDeleteModal={setShowDeleteModal}
-                                    deleteById={deleteById}
-                                />
-                            ))
-                        ) : (
-                            <tr>
-                                <td colSpan="9" className="text-center">
-                                    No movies found
-                                </td>
-                            </tr>
-                        )}
-                        </tbody>
-                    </table>
+                            {/* Movie Table */}
+                            <table className="table  table-bordered mt-4 ">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Release Year</th>
+                                    <th>Description</th>
+                                    <th>Rating</th>
+                                    <th>Starring</th>
+                                    <th>Directed By</th>
+                                    <th>Production Company</th>
+                                    <th>img</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {movies.length > 0 ? (
+                                    movies.map((movie) => (
+                                        <Movie
+                                            key={movie.id}
+                                            movie={movie}
+                                            openModalWithData={openModalWithData}
+                                            openEditModal={openEditModal}
+                                            setSelectedMovie={setSelectedMovie}
+                                            setShowDeleteModal={setShowDeleteModal}
+                                            deleteById={deleteById}
+                                        />
+                                    ))
+                                ) : (
+                                    <tr>
+                                        <td colSpan="9" className="text-center">
+                                            No movies found
+                                        </td>
+                                    </tr>
+                                )}
+                                </tbody>
+                            </table>
 
-                    {/* Pagination */}
-                    <div className="d-flex justify-content-center mt-4">
-                        <Button onClick={prevPage} disabled={pageNo === 0}>Previous</Button>
-                        {[...Array(totalPages).keys()].map((pageNum) => (
-                            <Button
-                                key={pageNum}
-                                onClick={() => gotoPage(pageNum + 1)}
-                                active={pageNum === pageNo}
-                            >
-                                {pageNum + 1}
-                            </Button>
-                        ))}
-                        <Button onClick={nextPage} disabled={pageNo >= totalPages - 1}>Next</Button>
-                    </div>
-                </Card.Body>
-            </Card>
+                            {/* Pagination */}
+                            <div className="d-flex justify-content-center mt-4">
+                                <Button onClick={prevPage} disabled={pageNo === 0}>Previous</Button>
+                                {[...Array(totalPages).keys()].map((pageNum) => (
+                                    <Button
+                                        key={pageNum}
+                                        onClick={() => gotoPage(pageNum + 1)}
+                                        active={pageNum === pageNo}
+                                    >
+                                        {pageNum + 1}
+                                    </Button>
+                                ))}
+                                <Button onClick={nextPage} disabled={pageNo >= totalPages - 1}>Next</Button>
+                            </div>
+                        </Card.Body>
+                    </Card>
+
+                </div>
+            </div>
 
             {/* Modals */}
             <Modal show={showAddModal} onHide={() => setShowAddModal(false)} dialogClassName="modal-lg">
@@ -513,16 +536,28 @@ function MovieManagement() {
                             />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="updatedMovieName" className="form-label">
-                                Img
-                            </label>
-                            <input
-                                type="url"
-                                className="form-control"
-                                id="updatedMovieImgLink"
-                                value={updatedMovieImgLink}
-                                onChange={(e) => setUpdatedMovieImgLink(e.target.value)}
-                            />
+                            <label htmlFor="updatedMovieImgLink" className="form-label"> Image</label>
+                            <div className="input-group">
+                                <input
+                                    className="form-control"
+                                    id="updatedMovieImgLink"
+                                    value={updatedMovieImgLink}
+                                    onChange={(e) => setUpdatedMovieImgLink(e.target.value)}
+                                    type="url"
+                                    placeholder="Enter image URL"
+                                />
+                                <label className="input-group-text" htmlFor="inputGroupFile01">
+                                    Upload
+                                </label>
+                                <input
+                                    type="file"
+                                    className="form-control"
+                                    id="inputGroupFile01"
+                                    style={{ display: 'none' }} // Hide the file input initially
+                                    onChange={(e) => setUpdatedMovieImgLink(e.target.value)}
+
+                                />
+                            </div>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="updatedMovieReleaseYear" className="form-label">
