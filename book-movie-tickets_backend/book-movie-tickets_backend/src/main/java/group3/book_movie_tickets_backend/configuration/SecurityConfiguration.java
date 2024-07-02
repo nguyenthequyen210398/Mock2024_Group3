@@ -38,7 +38,7 @@ public class SecurityConfiguration {
                 .permitAll()
                 .requestMatchers("api/v1/employees/**")
                 .permitAll()
-                .requestMatchers("api/v1/movies/**", "api/v1/tickets/**", "api/v1/seats/**", "api/v1/rooms/**")
+                .requestMatchers("api/v1/movies/**", "api/v1/tickets/**", "api/v1/seats/**", "api/v1/rooms/**","api/v1/accounts/**","api/v1/showtimes/**","api/v1/movieTypes")
                 .permitAll()
                 .requestMatchers(
                         "/v3/api-docs/**",
@@ -61,7 +61,7 @@ public class SecurityConfiguration {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.setAllowedOrigins(List.of("http://localhost:4200"));
+        configuration.setAllowedOrigins(List.of("http://localhost:3000"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
