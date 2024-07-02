@@ -1,7 +1,24 @@
+import React from 'react';
 import { Button } from 'react-bootstrap';
 
-const Movie = ({ movie, openModalWithData, openEditModal, setSelectedMovie, setShowDeleteModal, deleteById }) => {
-    const { id, name, releaseYear, description } = movie;
+const Movie = ({
+                   movie,
+                   openModalWithData,
+                   openEditModal,
+                   setSelectedMovie,
+                   setShowDeleteModal,
+                   deleteById
+               }) => {
+    const {
+        id,
+        name,
+        releaseYear,
+        description,
+        rating,
+        starring,
+        directedBy,
+        productionCompany
+    } = movie;
 
     return (
         <tr key={id}>
@@ -9,10 +26,23 @@ const Movie = ({ movie, openModalWithData, openEditModal, setSelectedMovie, setS
             <td>{name}</td>
             <td>{releaseYear}</td>
             <td>{description}</td>
-            <td>
-                <Button onClick={() => openModalWithData(movie)} variant="light">View</Button>
-                <Button onClick={() => openEditModal(movie)} variant="primary" style={{ marginLeft: '10px' }}>Edit</Button>
-                <Button onClick={() => { setSelectedMovie(movie); setShowDeleteModal(true); }} variant="danger" style={{ marginLeft: '10px' }}>Delete</Button>
+            <td>{rating}</td>
+            <td>{starring}</td>
+            <td>{directedBy}</td>
+            <td>{productionCompany}</td>
+            <td className="d-flex justify-content-center">
+                <Button onClick={() => openModalWithData(movie)} variant="light" className="me-2">
+                    View
+                </Button>
+                <Button onClick={() => openEditModal(movie)} variant="primary" className="me-2">
+                    Edit
+                </Button>
+                <Button onClick={() => {
+                    setSelectedMovie(movie);
+                    setShowDeleteModal(true);
+                }} variant="danger">
+                    Delete
+                </Button>
             </td>
         </tr>
     );
