@@ -311,13 +311,30 @@ function MovieManagement() {
                             />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="formFileSm" className="form-label"> Image</label>
-                            <input className="form-control form-control-sm"
-                                   id="newMovieImgLink"
-                                   value={newMovieImgLink}
-                                   onChange={(e) => setNewMovieImgLink(e.target.value)}
-                                   type="file"/>
+                            <label htmlFor="newMovieImgLink" className="form-label"> Image</label>
+                            <div className="input-group">
+                                <input
+                                    className="form-control"
+                                    id="newMovieImgLink"
+                                    value={newMovieImgLink}
+                                    onChange={(e) => setNewMovieImgLink(e.target.value)}
+                                    type="url"
+                                    placeholder="Enter image URL"
+                                />
+                                <label className="input-group-text" htmlFor="inputGroupFile01">
+                                    Upload
+                                </label>
+                                <input
+                                    type="file"
+                                    className="form-control"
+                                    id="inputGroupFile01"
+                                    style={{ display: 'none' }} // Hide the file input initially
+                                    onChange={(e) => setNewMovieImgLink(e.target.value)}
+
+                                />
+                            </div>
                         </div>
+
 
 
                         <div className="mb-3">
