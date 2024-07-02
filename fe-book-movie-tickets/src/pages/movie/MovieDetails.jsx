@@ -1,7 +1,7 @@
 // File: MovieDetails.jsx
 
 import React from 'react';
-import { useParams } from 'react-router-dom'; // Để lấy tham số từ URL
+import { Link, useParams } from 'react-router-dom'; // Để lấy tham số từ URL
 import { useGetListDataAPI } from '../../api/cinemaApi';
 import Header from '../../layouts/Header';
 import Footer from '../../layouts/Footer';
@@ -36,6 +36,7 @@ const MovieDetails = () => {
                 <p><strong>Thời lượng:</strong> {movie.duration} phút</p>
                 <p><strong>Đánh giá:</strong> /10</p>
                 <p><strong>Trailer:</strong> <a href={movie.trailer} target="_blank" rel="noopener noreferrer">Xem trailer</a></p>
+                <Link to={`/ticket-purchase/${movie.id}`} ><button className="custom-button">Đặt vé ngay</button></Link>
             </div>
 
             <Footer />
