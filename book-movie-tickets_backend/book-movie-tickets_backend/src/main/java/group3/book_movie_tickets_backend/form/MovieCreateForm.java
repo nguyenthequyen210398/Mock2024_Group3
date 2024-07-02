@@ -37,4 +37,6 @@ public class MovieCreateForm {
     private int status;
 
     private int RunningTime;  // thời lượng
+    private String imgLink;
+
 }

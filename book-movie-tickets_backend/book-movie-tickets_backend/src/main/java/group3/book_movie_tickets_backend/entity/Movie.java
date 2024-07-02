@@ -70,4 +70,6 @@ public class Movie {
 
     @Column
     private int RunningTime;  // thời lượng
+    @Column
+    private String imgLink;
 }
