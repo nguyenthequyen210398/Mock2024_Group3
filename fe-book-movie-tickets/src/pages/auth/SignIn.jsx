@@ -1,38 +1,40 @@
-import { useState } from 'react';
-import './SignIn.scss';
-
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import './SignIn.scss'
 function SignIn() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
-  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const initialValues = {
+    email: '',
+    password: '',
+    rememberMe: false,
+  };
 
+  const validationSchema = Yup.object({
+    email: Yup.string().email('Invalid email address').required('Required'),
+    password: Yup.string().required('Required'),
+  });
+
+  const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
     try {
-      const response = await fetch('http://localhost:8080/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
+      const response = await axios.post('http://localhost:8080/auth/signin', {
+        email: values.email,
+        password: values.password,
       });
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
+      const data = response.data;
 
-      const data = await response.json();
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('expiresIn', data.expiresIn);
 
-      // Handle success (store token, redirect, etc.)
-      console.log(data);
-
-      // Clear the error message
-      setError('');
+      setSubmitting(false);
+      navigate('/');
     } catch (error) {
       console.error('Error during login:', error);
-      setError('Wrong username or password!');
+      setFieldError('password', 'Wrong username or password!');
+      setSubmitting(false);
     }
   };
 
@@ -44,7 +46,7 @@ function SignIn() {
               <div className="mb-5">
                 <h2 className="display-5 fw-bold text-center">Sign in</h2>
                 <p className="text-center m-0">
-                  Dont have an account? <a href="sign-up">Sign up</a>
+                  Don't have an account? <a href="/sign-up">Sign up</a>
                 </p>
               </div>
             </div>
@@ -53,79 +55,94 @@ function SignIn() {
             <div className="col-12 col-lg-10 col-xl-8">
               <div className="row gy-5 justify-content-center">
                 <div className="col-12 col-lg-5">
-                  <form onSubmit={handleSubmit}>
-                    <div className="row gy-3 overflow-hidden">
-                      <div className="col-12">
-                        <div className="form-floating mb-3">
-                          <input
-                              type="email"
-                              className="form-control border-0 border-bottom rounded-0"
-                              name="email"
-                              id="email"
-                              placeholder="name@example.com"
-                              required
-                              value={email}
-                              onChange={(e) => setEmail(e.target.value)}
-                          />
-                          <label htmlFor="email" className="form-label">
-                            Email
-                          </label>
-                        </div>
-                      </div>
-                      <div className="col-12">
-                        <div className="form-floating mb-3">
-                          <input
-                              type="password"
-                              className="form-control border-0 border-bottom rounded-0"
-                              name="password"
-                              id="password"
-                              placeholder="Password"
-                              required
-                              value={password}
-                              onChange={(e) => setPassword(e.target.value)}
-                          />
-                          <label htmlFor="password" className="form-label">
-                            Password
-                          </label>
-                        </div>
-                      </div>
-                      <div className="col-12">
-                        <div className="row justify-content-between">
-                          <div className="col-6">
-                            <div className="form-check">
-                              <input
-                                  className="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  name="remember_me"
-                                  id="remember_me"
-                                  checked={rememberMe}
-                                  onChange={() => setRememberMe(!rememberMe)}
-                              />
-                              <label className="form-check-label text-secondary" htmlFor="remember_me">
-                                Remember me
-                              </label>
-                            </div>
-                          </div>
-                          <div className="col-6">
-                            <div className="text-end">
-                              <a href="/forgot-password" className="link-secondary text-decoration-none">
-                                Forgot password?
-                              </a>
-                            </div>
+                  <Formik
+                      initialValues={initialValues}
+                      validationSchema={validationSchema}
+                      onSubmit={handleSubmit}
+                  >
+                    <Form>
+                      <div className="row gy-3 overflow-hidden">
+                        <div className="col-12">
+                          <div className="form-floating mb-3">
+                            <Field
+                                type="email"
+                                className="form-control border-0 border-bottom rounded-0"
+                                id="email"
+                                name="email"
+                                placeholder="name@example.com"
+                            />
+                            <label htmlFor="email" className="form-label">
+                              Email
+                            </label>
+                            <ErrorMessage
+                                name="email"
+                                component="div"
+                                className="text-danger"
+                            />
                           </div>
                         </div>
-                      </div>
-                      <div className="col-12">
-                        {error && <div className="text-danger">{error}</div>}
-                        <div className="d-grid">
-                          <button className="btn btn-lg btn-dark rounded-0 fs-6" type="submit">
-                            Log in
-                          </button>
+                        <div className="col-12">
+                          <div className="form-floating mb-3">
+                            <Field
+                                type="password"
+                                className="form-control border-0 border-bottom rounded-0"
+                                id="password"
+                                name="password"
+                                placeholder="Password"
+                            />
+                            <label htmlFor="password" className="form-label">
+                              Password
+                            </label>
+                            <ErrorMessage
+                                name="password"
+                                component="div"
+                                className="text-danger"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-12">
+                          <div className="row justify-content-between">
+                            <div className="col-6">
+                              <div className="form-check">
+                                <Field
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    id="rememberMe"
+                                    name="rememberMe"
+                                />
+                                <label
+                                    className="form-check-label text-secondary"
+                                    htmlFor="rememberMe"
+                                >
+                                  Remember me
+                                </label>
+                              </div>
+                            </div>
+                            <div className="col-6">
+                              <div className="text-end">
+                                <a
+                                    href="/forgot-password"
+                                    className="link-secondary text-decoration-none"
+                                >
+                                  Forgot password?
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-12">
+                          <div className="d-grid">
+                            <button
+                                className="btn btn-lg btn-dark rounded-0 fs-6"
+                                type="submit"
+                            >
+                              Log in
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </form>
+                    </Form>
+                  </Formik>
                 </div>
                 <div className="col-12 col-lg-2 d-flex align-items-center justify-content-center gap-3 flex-lg-column">
                   <div className="bg-dark h-100 d-none d-lg-block" style={{ width: '1px', '--bs-bg-opacity': 0.1 }}></div>

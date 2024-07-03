@@ -1,49 +1,43 @@
-import './SignIn.scss';
-import  { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import './SignUp.scss';
-import {useNavigate} from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 function SignUp() {
-    const { register, handleSubmit, formState: { errors, dirtyFields, touchedFields }, getValues, setError, clearErrors } = useForm({
-        mode: 'onChange',
-    });
     const navigate = useNavigate();
-    const [agreeToTerms, setAgreeToTerms] = useState(false);
     const [formError, setFormError] = useState('');
 
-    const onSubmit = async (data) => {
+    const initialValues = {
+        email: '',
+        password: '',
+        rePassword: '',
+        agreeToTerms: false,
+    };
+
+    const validationSchema = Yup.object({
+        email: Yup.string().email('Invalid email format').required('Required'),
+        password: Yup.string().min(8, 'Password must be at least 8 characters').matches(/^[a-z0-9]+$/, 'Password can only contain lowercase letters and numbers').required('Required'),
+        rePassword: Yup.string().oneOf([Yup.ref('password')], 'Passwords must match').required('Required'),
+        agreeToTerms: Yup.bool().oneOf([true], 'You must agree to the terms and conditions'),
+    });
+
+    const onSubmit = async (values) => {
         try {
-            const response = await fetch('http://localhost:8080/auth/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email: data.email,
-                    password: data.password,
-                }),
+            const response = await axios.post('http://localhost:8080/auth/signup', {
+                email: values.email,
+                password: values.password,
             });
 
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
+            console.log(response.data);
 
-            const result = await response.json();
-            // Handle success (e.g., redirect, display success message, etc.)
-            console.log(result);
-
-            // Clear the error message
             setFormError('');
+            navigate('/sign-in');
         } catch (error) {
             console.error('Error during signup:', error);
             setFormError('Some error occurred');
         }
-    };
-
-    const clearError = () => {
-        clearErrors();
-        setFormError('');
     };
 
     return (
@@ -60,109 +54,92 @@ function SignUp() {
                     <div className="col-12 col-lg-10 col-xl-8">
                         <div className="row gy-5 justify-content-center">
                             <div className="col-12 col-lg-5">
-                                <form onSubmit={handleSubmit(onSubmit)}>
-                                    <div className="row gy-3 overflow-hidden">
-                                        <div className="col-12">
-                                            <div className="form-floating mb-3">
-                                                <input
-                                                    type="email"
-                                                    className="form-control border-0 border-bottom rounded-0"
-                                                    id="email"
-                                                    placeholder="name@example.com"
-                                                    {...register('email', { required: true })}
-                                                    onFocus={clearError}
-                                                />
-                                                <label htmlFor="email" className="form-label">Email</label>
-                                                {errors.email && dirtyFields.email && touchedFields.email && (
-                                                    <div className="text-danger">Email invalid!</div>
-                                                )}
-                                            </div>
-                                        </div>
-                                        <div className="col-12">
-                                            <div className="form-floating mb-3">
-                                                <input
-                                                    type="password"
-                                                    className="form-control border-0 border-bottom rounded-0"
-                                                    id="password"
-                                                    placeholder="Password"
-                                                    {...register('password', {
-                                                        required: true,
-                                                        pattern: /^[a-z0-9]{8,}$/,
-                                                    })}
-                                                    onFocus={clearError}
-                                                />
-                                                <label htmlFor="password" className="form-label">Password</label>
-                                                {errors.password && (dirtyFields.password || touchedFields.password) && (
-                                                    <div className="text-danger">
-                                                        Password is not empty, only contains a-z,0-9 and more than 8 characters!
+                                <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+                                    {({ isSubmitting }) => (
+                                        <Form>
+                                            <div className="row gy-3 overflow-hidden">
+                                                <div className="col-12">
+                                                    <div className="form-floating mb-3">
+                                                        <Field
+                                                            type="email"
+                                                            className="form-control border-0 border-bottom rounded-0"
+                                                            id="email"
+                                                            name="email"
+                                                            placeholder="name@example.com"
+                                                        />
+                                                        <label htmlFor="email" className="form-label">Email</label>
+                                                        <ErrorMessage name="email" component="div" className="text-danger" />
                                                     </div>
-                                                )}
-                                            </div>
-                                        </div>
-                                        <div className="col-12">
-                                            <div className="form-floating mb-3">
-                                                <input
-                                                    type="password"
-                                                    className="form-control border-0 border-bottom rounded-0"
-                                                    id="rePassword"
-                                                    placeholder="Password"
-                                                    {...register('rePassword', {
-                                                        required: true,
-                                                        validate: (value) => value === getValues('password') || 'Passwords do not match',
-                                                    })}
-                                                    onFocus={clearError}
-                                                />
-                                                <label htmlFor="rePassword" className="form-label">Re-Password</label>
-                                            </div>
-                                        </div>
-                                        <div className="col-12">
-                                            <div className="row justify-content-between">
+                                                </div>
+                                                <div className="col-12">
+                                                    <div className="form-floating mb-3">
+                                                        <Field
+                                                            type="password"
+                                                            className="form-control border-0 border-bottom rounded-0"
+                                                            id="password"
+                                                            name="password"
+                                                            placeholder="Password"
+                                                        />
+                                                        <label htmlFor="password" className="form-label">Password</label>
+                                                        <ErrorMessage name="password" component="div" className="text-danger" />
+                                                    </div>
+                                                </div>
+                                                <div className="col-12">
+                                                    <div className="form-floating mb-3">
+                                                        <Field
+                                                            type="password"
+                                                            className="form-control border-0 border-bottom rounded-0"
+                                                            id="rePassword"
+                                                            name="rePassword"
+                                                            placeholder="Re-enter Password"
+                                                        />
+                                                        <label htmlFor="rePassword" className="form-label">Re-Password</label>
+                                                        <ErrorMessage name="rePassword" component="div" className="text-danger" />
+                                                    </div>
+                                                </div>
                                                 <div className="col-12">
                                                     <div className="form-check">
-                                                        <input
+                                                        <Field
                                                             className="form-check-input"
                                                             type="checkbox"
-                                                            id="agree"
-                                                            checked={agreeToTerms}
-                                                            onChange={() => setAgreeToTerms(!agreeToTerms)}
+                                                            id="agreeToTerms"
+                                                            name="agreeToTerms"
                                                         />
-                                                        <label className="form-check-label text-secondary" htmlFor="agree">
+                                                        <label className="form-check-label text-secondary" htmlFor="agreeToTerms">
                                                             Agree to my terms.
                                                         </label>
+                                                        <ErrorMessage name="agreeToTerms" component="div" className="text-danger" />
+                                                    </div>
+                                                </div>
+                                                <div className="col-12">
+                                                    {formError && (
+                                                        <div className="text-danger">{formError}</div>
+                                                    )}
+                                                    <div className="d-grid">
+                                                        <button
+                                                            className="btn btn-lg btn-dark rounded-0 fs-6"
+                                                            type="submit"
+                                                            disabled={isSubmitting}
+                                                        >
+                                                            Sign Up
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div className="col-12">
+                                                    <div className="d-grid">
+                                                        <button
+                                                            className="btn btn-lg btn-light rounded-0 fs-6"
+                                                            type="button"
+                                                            onClick={() => navigate('/sign-in')}
+                                                        >
+                                                            Cancel
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="col-12">
-                                            {errors.rePassword && touchedFields.rePassword && (
-                                                <div className="text-danger">Passwords do not match!</div>
-                                            )}
-                                            {formError && (
-                                                <div className="text-danger">{formError}</div>
-                                            )}
-                                            <div className="d-grid">
-                                                <button
-                                                    className="btn btn-lg btn-dark rounded-0 fs-6"
-                                                    type="submit"
-                                                    disabled={!(agreeToTerms && Object.keys(errors).length === 0)}
-                                                >
-                                                    Sign Up
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div className="col-12">
-                                            <div className="d-grid">
-                                                <button
-                                                    className="btn btn-lg btn-light rounded-0 fs-6"
-                                                    type="button"
-                                                    onClick={() => navigate('/sign-in')}
-                                                >
-                                                    Cancel
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                                        </Form>
+                                    )}
+                                </Formik>
                             </div>
                             <div className="col-12 col-lg-2 d-flex align-items-center justify-content-center gap-3 flex-lg-column">
                                 <div className="bg-dark h-100 d-none d-lg-block" style={{ width: '1px', '--bs-bg-opacity': 0.1 }}></div>
