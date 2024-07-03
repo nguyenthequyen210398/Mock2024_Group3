@@ -1,43 +1,66 @@
-import {useState} from "react";
-import './ChangePassword.scss';
-import {Button} from "react-bootstrap";
+import { useState } from 'react';
+import axios from 'axios';
+import { Button } from 'react-bootstrap';
+import {useLocation, useNavigate} from "react-router-dom";
 
 function ResetPassword() {
+    const location = useLocation();
+    const { email } = location.state || {};
+
     const [passwordForm, setPasswordForm] = useState({
-        password: '',
+        email: email,
+        newPassword: '',
+        oldPassword: '',
         rePassword: '',
     });
     const [error, setError] = useState('');
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        if (passwordForm.password !== passwordForm.rePassword) {
+        if (passwordForm.newPassword !== passwordForm.rePassword) {
             setError('Passwords do not match');
             return;
         }
-        // Handle form submission logic here
-        console.log('Form submitted:', passwordForm);
-        // Clear form fields
-        setPasswordForm({
-            password: '',
-            rePassword: '',
-        });
+
+        try {
+            const response = await axios.post('http://localhost:8080/auth/reset-password', {
+                email: passwordForm.email,
+                newPassword: passwordForm.newPassword,
+                oldPassword: "",
+            });
+
+            console.log('Server response:', response.data);
+
+            // Clear form fields
+            setPasswordForm({
+                email: 'vtinam252@gmail.com',
+                newPassword: '',
+                oldPassword: '',
+                rePassword: '',
+            });
+
+            navigate("/sign-in")
+
+        } catch (error) {
+            // Handle error
+            console.error('Error:', error);
+            setError('Failed to reset password');
+        }
     };
 
     const clearError = () => {
         setError('');
     };
+    const navigate = useNavigate();
 
     const returnLogin = () => {
-        // Redirect or handle returning to login page
-        console.log('Returning to login');
+        navigate("/sign-in")
     };
-
     return (
         <section className="py-3 py-md-5 py-xl-8">
             <div className="container">
                 <div className="row">
-                    <div className="col-12 ">
+                    <div className="col-12">
                         <div className="mb-5">
                             <h2 className="display-5 fw-bold text-center">Reset Password</h2>
                             <p className="text-center m-0">Typing your new password.</p>
@@ -45,7 +68,7 @@ function ResetPassword() {
                     </div>
                 </div>
                 <div className="row justify-content-center">
-                    <div className="col-12  col-lg-10 col-xl-8">
+                    <div className="col-12 col-lg-10 col-xl-8">
                         <div className="row gy-5 justify-content-center">
                             <div className="col-12 col-lg-5">
                                 <form onSubmit={onSubmit}>
@@ -56,13 +79,13 @@ function ResetPassword() {
                                                 className="form-control border-0 border-bottom rounded-0"
                                                 name="password"
                                                 id="password"
-                                                value={passwordForm.password}
+                                                value={passwordForm.newPassword}
                                                 placeholder="Password"
                                                 required
                                                 onChange={(e) =>
                                                     setPasswordForm({
                                                         ...passwordForm,
-                                                        password: e.target.value,
+                                                        newPassword: e.target.value,
                                                     })
                                                 }
                                                 onFocus={clearError}
@@ -97,7 +120,7 @@ function ResetPassword() {
                                             <Button type="submit" className="btn btn-lg btn-dark rounded-0 fs-6">Change Password</Button>
                                         </div>
                                         <div className="d-grid">
-                                            <Button  onClick={returnLogin} className="btn btn-lg btn-light rounded-0 fs-6 mt-3">Cancel</Button>
+                                            <Button onClick={returnLogin} className="btn btn-lg btn-light rounded-0 fs-6 mt-3">Cancel</Button>
                                         </div>
                                     </div>
                                 </form>
