@@ -5,13 +5,35 @@ function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-    // If login fails, set error to true
-    setError(true);
+
+    try {
+      const response = await fetch('http://localhost:8080/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+
+      // Handle success (store token, redirect, etc.)
+      console.log(data);
+
+      // Clear the error message
+      setError('');
+    } catch (error) {
+      console.error('Error during login:', error);
+      setError('Wrong username or password!');
+    }
   };
 
   return (
@@ -22,7 +44,7 @@ function SignIn() {
               <div className="mb-5">
                 <h2 className="display-5 fw-bold text-center">Sign in</h2>
                 <p className="text-center m-0">
-                  Dont have an account? <a href="signup">Sign up</a>
+                  Dont have an account? <a href="sign-up">Sign up</a>
                 </p>
               </div>
             </div>
@@ -95,7 +117,7 @@ function SignIn() {
                         </div>
                       </div>
                       <div className="col-12">
-                        {error && <div className="text-danger">Wrong username or password!</div>}
+                        {error && <div className="text-danger">{error}</div>}
                         <div className="d-grid">
                           <button className="btn btn-lg btn-dark rounded-0 fs-6" type="submit">
                             Log in

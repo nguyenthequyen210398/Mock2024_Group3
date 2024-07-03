@@ -2,28 +2,48 @@ import './SignIn.scss';
 import  { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import './SignUp.scss';
+import {useNavigate} from "react-router-dom";
 
 function SignUp() {
-    const { register, handleSubmit, formState: { errors, dirtyFields, touchedFields },getValues, setError, clearErrors } = useForm({
+    const { register, handleSubmit, formState: { errors, dirtyFields, touchedFields }, getValues, setError, clearErrors } = useForm({
         mode: 'onChange',
     });
-
+    const navigate = useNavigate();
     const [agreeToTerms, setAgreeToTerms] = useState(false);
     const [formError, setFormError] = useState('');
 
-    const onSubmit = (data) => {
-        // Handle form submission
-        // If there's an error, set the formError state
-        setFormError('Some error occurred');
+    const onSubmit = async (data) => {
+        try {
+            const response = await fetch('http://localhost:8080/auth/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: data.email,
+                    password: data.password,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const result = await response.json();
+            // Handle success (e.g., redirect, display success message, etc.)
+            console.log(result);
+
+            // Clear the error message
+            setFormError('');
+        } catch (error) {
+            console.error('Error during signup:', error);
+            setFormError('Some error occurred');
+        }
     };
 
     const clearError = () => {
         clearErrors();
         setFormError('');
-    };
-
-    const validatePasswords = (value) => {
-        return value.password === value.rePassword || 'Passwords do not match';
     };
 
     return (
@@ -92,8 +112,6 @@ function SignUp() {
                                                     })}
                                                     onFocus={clearError}
                                                 />
-
-
                                                 <label htmlFor="rePassword" className="form-label">Re-Password</label>
                                             </div>
                                         </div>
@@ -134,7 +152,11 @@ function SignUp() {
                                         </div>
                                         <div className="col-12">
                                             <div className="d-grid">
-                                                <button className="btn btn-lg btn-light rounded-0 fs-6" type="button">
+                                                <button
+                                                    className="btn btn-lg btn-light rounded-0 fs-6"
+                                                    type="button"
+                                                    onClick={() => navigate('/sign-in')}
+                                                >
                                                     Cancel
                                                 </button>
                                             </div>
