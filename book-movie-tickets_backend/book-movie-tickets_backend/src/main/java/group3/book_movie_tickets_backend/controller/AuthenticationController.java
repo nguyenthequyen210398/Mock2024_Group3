@@ -55,8 +55,8 @@ public class AuthenticationController {
     @PostMapping("/change-password")
     public ResponseEntity<String> changePassword(@RequestBody ChangePasswordForm form) {
         try {
-            service.changePassword(form);
-            return ResponseEntity.ok("Change Password successful!");
+
+            return service.changePassword(form);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
@@ -65,7 +65,7 @@ public class AuthenticationController {
     @PostMapping("/reset-password")
     public ResponseEntity<String> resetPassword(@RequestBody ChangePasswordForm form) {
         try {
-            service.changePassword(form);
+            service.resetPassword(form);
             return ResponseEntity.ok("Change Password successful!");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
