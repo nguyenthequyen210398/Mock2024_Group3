@@ -19,7 +19,7 @@ function MovieManagement() {
     const [pageNo, setPageNo] = useState(0);
     const [pageSize, setPageSize] = useState(10);
     const [totalPages, setTotalPages] = useState(1);
-    const [currentSort, setCurrentSort] = useState('Sort By'); // Add state to manage current sort display
+    const [currentSort, setCurrentSort] = useState('Sort By');
 
 
     // State for new movie fields
@@ -179,11 +179,11 @@ function MovieManagement() {
     };
 
     if (loading) {
-        return <p>Loading...</p>; // Optional: Show a loading indicator
+        return <p>Loading...</p>;
     }
 
     if (error) {
-        return <p>Error: {error}</p>; // Optional: Show an error message
+        return <p>Error: {error}</p>; 
     }
 
     return (

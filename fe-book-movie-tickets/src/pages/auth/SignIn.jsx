@@ -30,7 +30,7 @@ function SignIn() {
       localStorage.setItem('expiresIn', data.expiresIn);
 
       setSubmitting(false);
-      navigate('/');
+      navigate('/movie-management');
     } catch (error) {
       console.error('Error during login:', error);
       setFieldError('password', 'Wrong username or password!');
