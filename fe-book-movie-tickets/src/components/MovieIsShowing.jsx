@@ -1,68 +1,53 @@
-import { useState } from 'react';
-import '../../src/main.scss';
-import { useGetListDataAPI } from '../api/cinemaApi';
+import React, { useEffect, useState } from "react";
+import { useGetListDataAPI } from "../api/cinemaApi";
+import { toDay } from "../utils/date";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
+
 function MovieIsShowing() {
+    const [movies, setMovies] = useGetListDataAPI(`https://66794dd518a459f6394f1eec.mockapi.io/cinema`);
 
-    const [movies, Setmovies] = useGetListDataAPI(`https://66794dd518a459f6394f1eec.mockapi.io/cinema`);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(6);
 
-    const [showOverlay, setShowOverlay] = useState(false);
-    const [currentMovie, setCurrentMovie] = useState(null);
+    const movieComing = movies.filter(item => item.releaseDate <= toDay);
 
-    const handleMouseEnter = (movie) => {
-        setCurrentMovie(movie);
-        setShowOverlay(true);
+    const handleWatchTrailer = (trailerUrl) => {
+        window.open(trailerUrl, '_blank'); // Open YouTube trailer in a new window/tab
     };
 
-    const handleMouseLeave = () => {
-        setShowOverlay(false);
-    };
-
-    const handleBuyTicket = () => {
-        // Xử lý khi người dùng click vào nút mua vé
-        console.log(`Đã mua vé cho phim: ${movies.title}`);
-    };
-
-    const handleWatchTrailer = () => {
-        // Xử lý khi người dùng click vào nút xem trailer
-        console.log(`Đang xem trailer của phim: ${movies.title}`);
-    };
-
-    const handleViewDetails = () => {
-        // Xử lý khi người dùng click vào nút xem chi tiết phim
-        console.log(`Đang xem chi tiết của phim: ${currentMovie.title}`);
-    };
-
-
-
+    // Logic for pagination
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = movieComing.slice(indexOfFirstItem, indexOfLastItem);
+    // Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
     return (
         <>
-
             <div className="movie-showing">
-                <h2>Phim đang chiếu</h2>
+                <h2>Phim Đang Chiếu</h2>
 
                 <div className="movie-list">
-                    {movies.map((movie, index) => (
-                        <div
-                            key={index}
-                            className="movie-item"
-                            onMouseEnter={() => handleMouseEnter(movie)}
-                            onMouseLeave={handleMouseLeave}
-                        >
+                    {currentItems.map((movie, index) => (
+                        <div key={index} className="movie-item">
                             <img src={movie.imageUrl} alt={movie.title} />
-                            {showOverlay && currentMovie === movie && (
-                                <div className="overlay">
-                                    <button onClick={handleBuyTicket}>Mua vé</button>
-                                    <button onClick={handleWatchTrailer}>Trailer</button>
-                                    <button onClick={handleViewDetails}>Xem chi tiết</button>
-                                </div>
-                            )}
                             <p className="movie-title">{movie.title}</p>
+                            <div className="overlay">
+                                <button onClick={() => handleWatchTrailer(movie.trailer)}>Trailer</button>
+                                <button><Link to={`/ticket-purchase/${movie.id}`} className="details-link">Mua vé</Link></button>
+                                <button><Link to={`/movie/${movie.id}`} className="details-link">Xem chi tiết</Link></button>
+                            </div>
                         </div>
                     ))}
                 </div>
-            </div>
 
+                {/* Pagination buttons */}
+                <div className="pagination">
+                    <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
+                    <button onClick={() => paginate(currentPage + 1)} disabled={currentItems.length < itemsPerPage || indexOfLastItem >= movieComing.length}>Next</button>
+                </div>
+            </div>
         </>
-    )
+    );
 }
+
 export default MovieIsShowing;

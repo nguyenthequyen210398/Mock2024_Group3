@@ -9,19 +9,20 @@ function Nav() {
       <div className='nav'
         style={{
           padding: '5px',
+
         }}
       >
         <Anchor
           direction="horizontal"
           items={[
             {
-              key: 'part-1',
-              href: '#part-1',
+              key: 'phim-dang-chieu',
+              href: '#phim-dang-chieu',
               title: 'Phim đang chiếu',
             },
             {
-              key: 'part-2',
-              href: '#part-2',
+              key: 'phim-sap-chieu',
+              href: '#phim-sap-chieu',
               title: 'Phim sắp chiếu',
             },
             {
@@ -34,10 +35,10 @@ function Nav() {
       </div>
       <div>
         <div
-          id="part-1"
+          id="phim-dang-chieu"
           style={{
             width: '100vw',
-            height: '100vh',
+            height: '80vh',
             textAlign: 'center',
             background: 'rgba(0,255,0,0.02)',
           }}
@@ -45,10 +46,10 @@ function Nav() {
 
 
         <div
-          id="part-2"
+          id="phim-sap-chieu"
           style={{
             width: '100vw',
-            height: '100vh',
+            height: '80vh',
             textAlign: 'center',
             background: 'rgba(0,0,255,0.02)',
           }}
@@ -57,7 +58,7 @@ function Nav() {
           id="part-3"
           style={{
             width: '100vw',
-            height: '100vh',
+            height: '50vh',
             textAlign: 'center',
             background: '#FFFBE9',
           }}
