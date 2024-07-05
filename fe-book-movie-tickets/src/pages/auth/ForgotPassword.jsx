@@ -1,5 +1,6 @@
-import {useState} from "react";
-
+import  { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 function ForgotPassword() {
     const [forgotPasswordForm, setForgotPasswordForm] = useState({
@@ -8,33 +9,52 @@ function ForgotPassword() {
     });
     const [sendEmail, setSendEmail] = useState(false);
     const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false); // Add loading state
+
+    const sendCode = async () => {
+        try {
+            setLoading(true); // Set loading to true before making the API call
+
+            await axios.get(`http://localhost:8080/auth/change-password/send-code/${forgotPasswordForm.email}`);
+            setSendEmail(true);
+            console.log('Code sent to email successfully!');
+        } catch (error) {
+            setError(true);
+            console.error('Error sending code:', error);
+        } finally {
+            setLoading(false); // Set loading to false after API call completes
+        }
+    };
+
+    const navigate = useNavigate();
+
+    const changePassword = async () => {
+        try {
+            const response = await axios.post('http://localhost:8080/auth/auth-code-email', {
+                email: forgotPasswordForm.email,
+                code: forgotPasswordForm.code,
+            });
+            console.log(response)
+            navigate('/reset-password', { state: { email: forgotPasswordForm.email } });
+        } catch (error) {
+            setError(true);
+            console.error('Error changing password:', error);
+        }
+    };
 
     const onSubmit = (e) => {
         e.preventDefault();
-        // Handle form submission logic here
         console.log('Form submitted:', forgotPasswordForm);
-    };
-
-    const giveCode = () => {
-        // Simulate sending code to email (setSendEmail to true in real scenario)
-        setSendEmail(true);
+        changePassword();
     };
 
     const returnLogin = () => {
-        // Redirect or handle returning to login page
-        console.log('Returning to login');
+        window.location.href = 'http://localhost:8080';
     };
 
     const clearError = () => {
         setError(false);
     };
-
-    /*    const returnLogin = () => {
-            // Redirect or handle returning to login page
-            console.log('Returning to login');
-        };*/
-
-
 
     return (
         <section className="py-3 py-md-5 py-xl-8">
@@ -99,24 +119,25 @@ function ForgotPassword() {
                                         </div>
                                     )}
                                     <div className="col-12">
-                                        {error && (
-                                            <div className="text-danger">Wrong email or Code</div>
-                                        )}
+                                        {error && <div className="text-danger">Wrong email or Code</div>}
                                         {!sendEmail && (
                                             <div className="d-grid">
                                                 <button
                                                     type="button"
                                                     className="btn btn-lg btn-dark rounded-0 fs-6"
-                                                    onClick={giveCode}
+                                                    onClick={sendCode}
+                                                    disabled={loading} // Disable button while loading
                                                 >
-                                                    Send CODE
+                                                    {loading ? (
+                                                        <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                                    ) : (
+                                                        "Send CODE"
+                                                    )}
                                                 </button>
                                             </div>
                                         )}
                                         {sendEmail && (
-                                            <div className="text-success">
-                                                Code sent to email successfully!
-                                            </div>
+                                            <div className="text-success">Code sent to email successfully!</div>
                                         )}
                                         {sendEmail && (
                                             <div className="d-grid">
