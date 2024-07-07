@@ -51,4 +51,18 @@ public class SeatService implements ISeatService {
     public void deleteById(Integer id) {
         repository.deleteById(id);
     }
+
+    @Override
+    public String updateStatus(SeatDto form) {
+        try{
+            Seat seat = repository.getSeatBySeatId(form.getId());
+            seat.setSeatStatus(form.getSeatStatus());
+            repository.save(seat);
+            return "Successfully";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "Unsucessfully";
+        }
+
+    }
 }

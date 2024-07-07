@@ -24,4 +24,11 @@ public class Seat {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "type_id", referencedColumnName = "id")
     private SeatType type;
+
+    @Column
+    private String seatStatus;
+
+    public void setSeatStatus(String seatStatus) {
+        this.seatStatus = seatStatus;
+    }
 }

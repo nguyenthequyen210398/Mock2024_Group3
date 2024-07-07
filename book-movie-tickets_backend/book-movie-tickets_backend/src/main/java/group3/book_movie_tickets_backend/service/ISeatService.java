@@ -16,4 +16,6 @@ public interface ISeatService {
     void updateById(Integer id, SeatDto form);
 
     void deleteById(Integer id);
+
+    String updateStatus(SeatDto form);
 }
