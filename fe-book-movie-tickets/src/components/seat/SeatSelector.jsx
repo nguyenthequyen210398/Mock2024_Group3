@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../movie/movie.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCouch } from '@fortawesome/free-solid-svg-icons';
+
 
 const SeatSelector = ({
     scheduleData,
@@ -59,6 +62,7 @@ const SeatSelector = ({
                 {Object.keys(seatsByRow).map((row) => (
                     <div key={row} className="seat-row">
                         <ul className="seats">
+
                             {seatsByRow[row].map((seat, index) => (
                                 <li
                                     key={index}
@@ -73,6 +77,7 @@ const SeatSelector = ({
                                         }`}
                                     onClick={() => handleSeatSelect(seat)}
                                 >
+                                    <FontAwesomeIcon icon={faCouch} />
                                     {`${seat.row}${seat.seatNumber}`}{' '}
                                     {/* Hiển thị hàng + số ghế */}
                                 </li>
@@ -80,7 +85,10 @@ const SeatSelector = ({
                         </ul>
                     </div>
                 ))}
+
             </div>
+
+
         </div>
     );
 };
