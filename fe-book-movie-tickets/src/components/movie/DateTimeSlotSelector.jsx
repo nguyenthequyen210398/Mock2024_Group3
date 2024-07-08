@@ -91,7 +91,7 @@ const DateTimeSlotSelector = ({ scheduleData, onDateTimeSlotSelect }) => {
     }
 
     return (
-        <div>
+        <div className='date-time'>
             <h2>Chọn ngày và khung giờ chiếu:</h2>
 
             <div className="current-date-time">
