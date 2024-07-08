@@ -1,0 +1,119 @@
+.seat {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.available {
+  background-color: #5fe295; /* Màu cho ghế có sẵn */
+}
+
+.reserved {
+  background-color: #d65012; /* Màu cho ghế đã đặt trước */
+}
+
+.selected {
+  background-color: #bee5eb; /* Màu cho ghế đã chọn */
+}
+
+.confirmation-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.confirmation-container h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.confirmation-container p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.confirmation-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.confirmation-container li {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.confirmation-container button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirmation-container button:hover {
+  background-color: #0056b3;
+}
+
+.date-selector button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  margin: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.date-selector button:hover {
+  background-color: #e0e0e0;
+}
+
+.date-selector button:active {
+  transform: scale(0.95);
+}
+
+.navigation button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 4px 8px;
+  margin: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.navigation button:hover {
+  background-color: #e0e0e0;
+}
+
+.navigation button:active {
+  transform: scale(0.95);
+}
+
+.time-slot-selector button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  margin: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.time-slot-selector button:hover {
+  background-color: #e0e0e0;
+}
+
+.time-slot-selector button:active {
+  transform: scale(0.95);
+}
