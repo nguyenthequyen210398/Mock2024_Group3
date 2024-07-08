@@ -44,7 +44,7 @@ const SeatSelector = ({
     }
 
     return (
-        <div>
+        <div className='selector-seat'>
             <h2>Chọn ghế ngồi:</h2>
             <p>
                 Khung giờ: {selectedTimeSlot.time} - Rạp chiếu:{' '}
