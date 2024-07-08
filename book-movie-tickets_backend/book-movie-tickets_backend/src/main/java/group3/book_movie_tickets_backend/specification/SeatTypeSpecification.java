@@ -1,8 +1,8 @@
 package group3.book_movie_tickets_backend.specification;
 
-import group3.book_movie_tickets_backend.entity.Movie;
-import group3.book_movie_tickets_backend.form.MovieFilterForm;
-import group3.book_movie_tickets_backend.form.TicketFilterForm;
+import group3.book_movie_tickets_backend.entity.SeatType;
+import group3.book_movie_tickets_backend.form.RoomFilterForm;
+import group3.book_movie_tickets_backend.form.SeatTypeFilterForm;
 import jakarta.persistence.criteria.Path;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;
@@ -11,8 +11,8 @@ import org.springframework.util.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TicketSpecification {
-    public static Specification<Movie> buildSpec(TicketFilterForm form) {
+public class SeatTypeSpecification {
+    public static Specification<SeatType> buildSpec(SeatTypeFilterForm form) {
         return (root, query, builder) ->
         {
             List<Predicate> predicates = new ArrayList<>();
