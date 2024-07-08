@@ -72,4 +72,7 @@ public class Movie {
     private int RunningTime;  // thời lượng
     @Column
     private String imgLink;
+
+    @Column
+    private String trailer;
 }

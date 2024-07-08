@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("api/v1/movies")
 public class MovieController {
@@ -26,6 +29,31 @@ public class MovieController {
             @RequestParam(value = "sortDir", defaultValue = "asc", required = false) String sortDir) {
         Page<MovieDto> list = service.getAll(form, pageNo, pageSize, sortBy, sortDir);
         return list;
+    }
+
+    //movie is showwing
+    @GetMapping("/showing")
+    public List<Object> findAllShowing() {
+        List<MovieDto> movieDtos = service.getAllShowing();
+
+        List<Object> customResponse = movieDtos.stream()
+                .map(movieDto -> {
+                    // Create a custom map for each movie
+                    return new Object() {
+                        public String imageUrl = movieDto.getImgLink();
+                        public String title = movieDto.getName();
+                        public String releaseDate = String.valueOf(movieDto.getReleaseYear());
+                        public int duration = movieDto.getRunningTime();
+                        public String country = movieDto.getCountry();
+                        public String director = movieDto.getDirectedBy();
+                        public String genre = movieDto.getGenre();
+                        public String trailer = movieDto.getTrailer();
+                        public Integer id = movieDto.getId();
+                    };
+                })
+                .collect(Collectors.toList());
+
+        return customResponse;
     }
 
     @GetMapping(value = "/{id}")

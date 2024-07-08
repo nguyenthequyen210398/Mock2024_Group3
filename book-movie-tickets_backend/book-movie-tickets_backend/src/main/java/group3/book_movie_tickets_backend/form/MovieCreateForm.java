@@ -39,4 +39,8 @@ public class MovieCreateForm {
     private int RunningTime;  // thời lượng
     private String imgLink;
 
+    private String trailer;
+
+    private String genre;
+
 }

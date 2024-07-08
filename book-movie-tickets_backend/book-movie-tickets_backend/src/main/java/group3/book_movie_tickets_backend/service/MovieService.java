@@ -16,6 +16,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class MovieService implements IMovieService {
     @Autowired
@@ -55,5 +58,20 @@ public class MovieService implements IMovieService {
     @Override
     public void deleteById(Integer id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public List<MovieDto> getAllShowing() {
+        List<Movie> movies = repository.findAllByStatusIs(1); // 1 means currently showing
+
+        List<MovieDto> movieDtos = movies.stream()
+                .map(movie -> {
+                    MovieDto dto = mapper.map(movie, MovieDto.class);
+                    dto.setGenre("genre 1");
+                    return dto;
+                })
+                .collect(Collectors.toList());
+
+        return movieDtos;
     }
 }
