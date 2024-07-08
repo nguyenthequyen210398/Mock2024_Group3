@@ -1,8 +1,7 @@
 
 
 import HomePage from './pages/main/HomePage';
-import Movie from './pages/movie/Movie.jsx';
-import TicketMana from "./pages/ticket/TicketMana.jsx";
+import MovieManagement from "./pages/movie/MovieManagement.jsx";
 
 function App() {
 
@@ -12,7 +11,7 @@ function App() {
       {/* <ErrorPage /> */}
       {/* <Footer /> */}
       {/* <Header /> */}
-      <Movie />
+      <MovieManagement />
       {/* <TicketMana /> */}
 
     </>
