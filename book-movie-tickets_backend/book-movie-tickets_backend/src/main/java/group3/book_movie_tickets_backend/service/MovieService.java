@@ -74,4 +74,19 @@ public class MovieService implements IMovieService {
 
         return movieDtos;
     }
+
+    @Override
+    public List<MovieDto> getAllComing() {
+        List<Movie> movies = repository.findAllByStatusIs(0); // 0 is coming
+
+        List<MovieDto> movieDtos = movies.stream()
+                .map(movie -> {
+                    MovieDto dto = mapper.map(movie, MovieDto.class);
+                    dto.setGenre("genre 1");
+                    return dto;
+                })
+                .collect(Collectors.toList());
+
+        return movieDtos;
+    }
 }

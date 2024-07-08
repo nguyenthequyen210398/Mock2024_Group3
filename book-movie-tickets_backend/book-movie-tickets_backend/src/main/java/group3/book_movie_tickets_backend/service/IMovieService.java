@@ -22,4 +22,5 @@ public interface IMovieService {
 
     List<MovieDto> getAllShowing();
 
+    List<MovieDto> getAllComing();
 }

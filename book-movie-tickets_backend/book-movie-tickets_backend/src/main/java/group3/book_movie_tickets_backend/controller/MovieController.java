@@ -56,6 +56,31 @@ public class MovieController {
         return customResponse;
     }
 
+    //movie is showwing
+    @GetMapping("/coming")
+    public List<Object> findAllComing() {
+        List<MovieDto> movieDtos = service.getAllComing();
+
+        List<Object> customResponse = movieDtos.stream()
+                .map(movieDto -> {
+                    // Create a custom map for each movie
+                    return new Object() {
+                        public String imageUrl = movieDto.getImgLink();
+                        public String title = movieDto.getName();
+                        public String releaseDate = String.valueOf(movieDto.getReleaseYear());
+                        public int duration = movieDto.getRunningTime();
+                        public String country = movieDto.getCountry();
+                        public String director = movieDto.getDirectedBy();
+                        public String genre = movieDto.getGenre();
+                        public String trailer = movieDto.getTrailer();
+                        public Integer id = movieDto.getId();
+                    };
+                })
+                .collect(Collectors.toList());
+
+        return customResponse;
+    }
+
     @GetMapping(value = "/{id}")
     public MovieDto findById(@PathVariable("id") Integer id) {
         return service.getById(id);
