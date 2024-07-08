@@ -36,6 +36,10 @@ const SeatSelector = ({
 
     // Xử lý việc chọn ghế
     const handleSeatSelect = (seat) => {
+        // Kiểm tra nếu ghế đã có trạng thái 'reserved' thì không cho phép chọn
+        if (seat.status === 'reserved') {
+            return;
+        }
         onSeatSelect(seat);
     };
 
