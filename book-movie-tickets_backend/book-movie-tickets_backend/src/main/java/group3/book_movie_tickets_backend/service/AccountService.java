@@ -1,29 +1,18 @@
 package group3.book_movie_tickets_backend.service;
 
-import group3.book_movie_tickets_backend.dto.AccountDto;
-import group3.book_movie_tickets_backend.dto.MovieDto;
 import group3.book_movie_tickets_backend.entity.Account;
-import group3.book_movie_tickets_backend.entity.Movie;
 import group3.book_movie_tickets_backend.entity.changePasswordRequest;
-import group3.book_movie_tickets_backend.form.AccountCreateForm;
-import group3.book_movie_tickets_backend.form.AccountFilterForm;
 import group3.book_movie_tickets_backend.form.ChangePasswordForm;
 import group3.book_movie_tickets_backend.repository.IAccountRepository;
 import group3.book_movie_tickets_backend.repository.IChangePasswordRepository;
-import group3.book_movie_tickets_backend.specification.AccountSpecification;
-import group3.book_movie_tickets_backend.specification.MovieSpecification;
-import jakarta.transaction.Transactional;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -39,9 +28,13 @@ public class AccountService implements IAccountService {
     @Autowired
     private IAccountRepository repository;
     @Autowired
-    private ModelMapper mapper;
-    @Autowired
     private IChangePasswordRepository changePasswordRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
 
     @Override
     public List<Account> findAll() {
@@ -51,9 +44,32 @@ public class AccountService implements IAccountService {
 
     //Change Password
     @Override
-    public void changePassword(ChangePasswordForm form) {
+    public ResponseEntity<String> changePassword(ChangePasswordForm form) {
+        try {
+            Account account = repository.findByEmail(form.getEmail()).orElseThrow();
+            if (authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            form.getEmail(),
+                            form.getOldPassword()
+                    )
+            ).isAuthenticated()
+            ) {
+                account.setPassword(passwordEncoder.encode(form.getNewPassword()));
+                repository.save(account);
+                return ResponseEntity.ok("Change Password successful!");
+            } else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Wrong Old Password !");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Change password Fail!");
+        }
+    }
+
+    //Change Password
+    @Override
+    public void resetPassword(ChangePasswordForm form) {
         Account account = repository.findByEmail(form.getEmail()).orElseThrow();
-        account.setPassword(form.getPassword());
+        account.setPassword(passwordEncoder.encode(form.getNewPassword()));
         repository.save(account);
     }
 
@@ -114,44 +130,6 @@ public class AccountService implements IAccountService {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
-
-    @Override
-    @Transactional
-    public void create(AccountCreateForm form) {
-        Account emp = mapper.map(form, Account.class);
-        repository.save(emp);
-
-    }
-
-
-    @Override
-    public Page<AccountDto> getAll(AccountFilterForm form, int pageNo, int pageSize, String sortBy, String sortDir) {
-
-
-        Specification<Account> spec = AccountSpecification.buildSpec(form);
-        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
-        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
-        Page<Account> accountPage = repository.findAll(spec, pageable);
-        return accountPage.map(account -> mapper.map(account, AccountDto.class));
-
-
-    }
-
-
-    @Override
-    public AccountDto getById(Integer id) {
-        return mapper.map(repository.findById(id).orElse(null), AccountDto.class);
-    }
-
-    @Override
-    public void updateById(Integer id, AccountDto form) {
-        Account account = mapper.map(form, Account.class);
-    }
-
-    @Override
-    public void deleteById(Integer id) {
-        repository.deleteById(id);
-    }
-
+    //authenticateCodeAndEmail - End
 
 }

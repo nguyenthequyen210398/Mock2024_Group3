@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ChangePasswordForm {
-    private String email ;
-    private String password ;
-    private String rePassword ;
+    private String email;
+    private String oldPassword;
+    private String newPassword;
 }

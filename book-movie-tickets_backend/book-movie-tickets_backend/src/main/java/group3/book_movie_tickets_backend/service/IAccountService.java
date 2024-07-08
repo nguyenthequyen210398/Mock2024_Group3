@@ -1,5 +1,7 @@
 package group3.book_movie_tickets_backend.service;
 
+import group3.book_movie_tickets_backend.entity.Account;
+import group3.book_movie_tickets_backend.form.ChangePasswordForm;
 import group3.book_movie_tickets_backend.dto.AccountDto;
 import group3.book_movie_tickets_backend.dto.MovieDto;
 import group3.book_movie_tickets_backend
@@ -15,7 +17,9 @@ public interface IAccountService {
     List<Account> findAll();
 
     //Change Password
-    void changePassword(ChangePasswordForm form);
+    ResponseEntity<String> changePassword(ChangePasswordForm form);
+
+    void resetPassword(ChangePasswordForm form);
 
     ResponseEntity<String> sendCode(String email);
 
