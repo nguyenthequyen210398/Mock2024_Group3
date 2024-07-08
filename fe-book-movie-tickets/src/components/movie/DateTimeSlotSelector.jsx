@@ -106,8 +106,8 @@ const DateTimeSlotSelector = ({ scheduleData, onDateTimeSlotSelect }) => {
                             (movie) => movie.date === date
                         );
                         const movieTitle = currentMovie
-                            ? currentMovie.movieTitle
-                            : 'Chưa có lịch chiếu';
+                            ? ""
+                            : ' - Chưa có lịch chiếu';
 
                         const disabled =
                             currentMovie &&
@@ -123,7 +123,7 @@ const DateTimeSlotSelector = ({ scheduleData, onDateTimeSlotSelect }) => {
                                     onClick={() => handleDateSelect(date)}
                                     disabled={disabled}
                                 >
-                                    {date} - {movieTitle}
+                                    {date} {movieTitle}
                                 </button>
                             </li>
                         );
