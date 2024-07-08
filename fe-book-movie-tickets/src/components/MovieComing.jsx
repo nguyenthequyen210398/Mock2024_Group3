@@ -4,7 +4,7 @@ import { toDay } from "../utils/date";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 function MovieComing() {
-    const [movies, setMovies] = useGetListDataAPI(`https://66794dd518a459f6394f1eec.mockapi.io/cinema`);
+    const [movies, setMovies] = useGetListDataAPI(`http://localhost:8080/api/v1/movies/coming`);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(6);
