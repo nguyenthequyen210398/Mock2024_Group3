@@ -6,6 +6,8 @@ import group3.book_movie_tickets_backend.form.MovieFilterForm;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 public interface IMovieService {
     @Transactional
     void create(MovieCreateForm form);
@@ -17,4 +19,8 @@ public interface IMovieService {
     void updateById(Integer id, MovieDto form);
 
     void deleteById(Integer id);
+
+    List<MovieDto> getAllShowing();
+
+    List<MovieDto> getAllComing();
 }

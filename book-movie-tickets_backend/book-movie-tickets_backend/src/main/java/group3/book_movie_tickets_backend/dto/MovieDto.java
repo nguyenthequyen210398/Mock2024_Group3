@@ -38,6 +38,9 @@ public class MovieDto {
     private int status;
 
     private int RunningTime;  // thời lượng
-    private String imgLink;
+    private String imgLink; // link ảnh
+    private String trailer;
+
+    private String genre;
 
 }
