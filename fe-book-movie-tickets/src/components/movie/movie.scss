@@ -2,7 +2,7 @@
   margin-left: 50px;
 }
 .seat-selector {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 20px auto;
   padding: 20px;
   // border: 1px solid #ccc;
@@ -10,14 +10,19 @@
   // background-color: #f9f9f9;
 }
 .seat {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  margin: 5px;
+  display: inline-flex; /* Sử dụng flexbox để căn chỉnh biểu tượng và chữ */
+  flex-direction: column; /* Xếp các phần tử theo chiều dọc */
+  align-items: center; /* Căn giữa theo chiều ngang */
+  justify-content: center; /* Căn giữa theo chiều dọc */
+  width: 50px; /* Điều chỉnh chiều rộng theo nhu cầu */
+  height: 50px; /* Điều chỉnh chiều cao theo nhu cầu */
   border: 1px solid #ccc;
-  text-align: center;
-  line-height: 30px;
+  margin: 5px;
   cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.9em;
+  position: relative; /* Đảm bảo phần tử con có vị trí tương đối */
 }
 
 .available {
