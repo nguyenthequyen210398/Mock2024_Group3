@@ -38,7 +38,8 @@ public class SecurityConfiguration {
                 .permitAll()
                 .requestMatchers("api/v1/employees/**")
                 .permitAll()
-                .requestMatchers("api/v1/movies/**", "api/v1/tickets/**", "api/v1/seats/**", "api/v1/rooms/**","api/v1/accounts/**","api/v1/showtimes/**","api/v1/movieTypes")
+                .requestMatchers("api/v1/movies/**", "api/v1/tickets/**", "api/v1/seats/**", "api/v1/rooms/**", "api/v1/accounts/**", "api/v1/showtimes/**",
+                        "api/v1/movieTypes", "api/v1/seatTypes/**", "api/v1/userDetails/**")
                 .permitAll()
                 .requestMatchers(
                         "/v3/api-docs/**",

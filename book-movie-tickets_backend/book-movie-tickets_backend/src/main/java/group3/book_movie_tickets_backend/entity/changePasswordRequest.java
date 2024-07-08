@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class changePasswordRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id ;
+    private String id ;
     private String email ;
     private String code ;
     @CreationTimestamp
