@@ -5,6 +5,7 @@ import group3.book_movie_tickets_backend.entity.changePasswordRequest;
 import group3.book_movie_tickets_backend.form.ChangePasswordForm;
 import group3.book_movie_tickets_backend.repository.IAccountRepository;
 import group3.book_movie_tickets_backend.repository.IChangePasswordRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,8 @@ public class AccountService implements IAccountService {
     private IAccountRepository repository;
     @Autowired
     private IChangePasswordRepository changePasswordRepository;
-
+    @Autowired
+    private ModelMapper mapper;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
