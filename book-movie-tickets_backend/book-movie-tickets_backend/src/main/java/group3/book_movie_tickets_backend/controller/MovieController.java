@@ -81,10 +81,22 @@ public class MovieController {
         return customResponse;
     }
 
-    @GetMapping(value = "/{id}")
-    public MovieDto findById(@PathVariable("id") Integer id) {
-        return service.getById(id);
+    @GetMapping(value = "/get-by-id/{id}")
+    public Object findById(@PathVariable("id") Integer id) {
+        MovieDto movieDto = service.getById(id);
+        return new Object() {
+            public String imageUrl = movieDto.getImgLink();
+            public String title = movieDto.getName();
+            public String releaseDate = String.valueOf(movieDto.getReleaseYear());
+            public int duration = movieDto.getRunningTime();
+            public String country = movieDto.getCountry();
+            public String director = movieDto.getDirectedBy();
+            public String genre = movieDto.getGenre();
+            public String trailer = movieDto.getTrailer();
+            public Integer id = movieDto.getId();
+        };
     }
+
 
     @PostMapping
     public void create(@RequestBody MovieCreateForm form) {

@@ -1,8 +1,6 @@
 package group3.book_movie_tickets_backend.specification;
 
-import group3.book_movie_tickets_backend.entity.Movie;
 import group3.book_movie_tickets_backend.entity.MovieTypes;
-import group3.book_movie_tickets_backend.form.MovieFilterForm;
 import group3.book_movie_tickets_backend.form.MovieTypesFilterForm;
 import jakarta.persistence.criteria.Path;
 import jakarta.persistence.criteria.Predicate;
@@ -24,12 +22,10 @@ public class MovieTypesSpecification {
 
             if (StringUtils.hasText(form.getSearch())) {
                 String pattern = "%" + form.getSearch().trim() + "%";
-                Path<String> fullName = root.get("fullName");
-                Predicate hasFullNameLike = builder.like(fullName, pattern);
-                Path<String> address = root.get("address");
-                Predicate hasAddressLike = builder.like(address, pattern);
+                Path<String> name = root.get("name");
+                Predicate hasNameLike = builder.like(name, pattern);
 
-                predicates.add(builder.or(hasFullNameLike, hasAddressLike));
+                predicates.add(builder.or(hasNameLike));
             }
 
             return builder.and(predicates.toArray(new Predicate[0]));
