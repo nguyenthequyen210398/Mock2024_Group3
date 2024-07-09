@@ -1,15 +1,45 @@
 package group3.book_movie_tickets_backend.dto;
 
-import group3.book_movie_tickets_backend.entity.Room;
-import group3.book_movie_tickets_backend.entity.SeatType;
+
 
 public class SeatDto {
     private Integer id;
 
-    private Room room;
-
     private String row;
 
-    private int col;
-    private SeatType type;
+    private Integer seatNumber;
+
+    private String seatStatus;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getRow() {
+        return row;
+    }
+
+    public void setRow(String row) {
+        this.row = row;
+    }
+
+    public Integer getSeatNumber() {
+        return seatNumber;
+    }
+
+    public void setSeatNumber(Integer seatNumber) {
+        this.seatNumber = seatNumber;
+    }
+
+    public String getSeatStatus() {
+        return seatStatus;
+    }
+
+    public void setSeatStatus(String seatStatus) {
+        this.seatStatus = seatStatus;
+    }
 }
