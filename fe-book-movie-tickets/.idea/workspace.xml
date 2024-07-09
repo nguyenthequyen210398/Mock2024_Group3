@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdbbe72a-fc6b-4c96-a8c1-165a86d533f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MovieComing.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MovieComing.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Movie.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Movie.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ticket/TicketPurchase.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ticket/TicketPurchase.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -16,7 +16,7 @@ import { useGetListDataAPI } from '../../api/cinemaApi';
 
 const TicketPurchase = () => {
     const { id } = useParams();
-    const [movie, setMovie] = useGetListDataAPI(`https://66794dd518a459f6394f1eec.mockapi.io/cinema/${id}`);
+    const [movie, setMovie] = useGetListDataAPI(`http://localhost:8080/api/v1/movies/get-by-id/${id}`);
 
     const [selectedDate, setSelectedDate] = useState(null); // Ngày chiếu được chọn
     const [selectedTimeSlot, setSelectedTimeSlot] = useState(null); // Khung giờ chiếu được chọn
