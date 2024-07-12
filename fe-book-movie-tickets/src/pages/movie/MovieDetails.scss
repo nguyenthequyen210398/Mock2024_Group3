@@ -82,21 +82,41 @@
 
 
 /* Button.css */
-.custom-button {
+.buy-ticket-button {
+    background-color: #4caf50; /* Màu nền */
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    text-align: center;
+    text-decoration: none;
     display: inline-block;
-    padding: 12px 24px;
     font-size: 18px;
     font-weight: bold;
-    text-decoration: none;
-    color: #fff;
-    background-color: #f39c12; /* Màu nền */
-    border: none;
-    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    border-radius: 6px;
+    outline: none; /* Loại bỏ border xung quanh khi focus */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Bóng đổ */
+    overflow: hidden; /* Ẩn các yếu tố vượt ra ngoài nút */
+    position: relative; /* Để dễ dàng xử lý vị trí của các phần tử bên trong */
+    animation: jump 1s infinite alternate; /* Áp dụng animation với tên là jump */
+    transition: all 0.3s ease;
   }
   
-  .custom-button:hover {
-    background-color: #e67e22; /* Màu nền khi di chuột vào */
+  @keyframes jump {
+    0% {
+      transform: translateY(0); /* Trạng thái ban đầu */
+    }
+    50% {
+      transform: translateY(-10px); /* Di chuyển lên trên */
+    }
+    100% {
+      transform: translateY(0); /* Quay trở lại trạng thái ban đầu */
+    }
+  }
+  
+  .buy-ticket-button:hover {
+    background-color: #00c4f5; /* Màu nền khi hover */
+    transform: translateY(-3px); /* Dịch chuyển lên trên một chút */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* Hiệu ứng bóng đổ khi hover */
   }
   

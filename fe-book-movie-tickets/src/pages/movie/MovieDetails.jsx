@@ -36,7 +36,9 @@ const MovieDetails = () => {
                 <p><strong>Thời lượng:</strong> {movie.duration} phút</p>
                 <p><strong>Đánh giá:</strong> /10</p>
                 <p><strong>Trailer:</strong> <a href={movie.trailer} target="_blank" rel="noopener noreferrer">Xem trailer</a></p>
-                <Link to={`/ticket-purchase/${movie.id}`} ><button className="custom-button">Đặt vé ngay</button></Link>
+                <Link to={`/ticket-purchase/${movie.id}`} ><button className="buy-ticket-button">
+                    <i class="fa fa-hand-o-right"> Đặt vé tại đây</i>
+                </button></Link>
             </div>
 
             <Footer />

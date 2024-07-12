@@ -1,0 +1,156 @@
+.selector-seat{
+  margin-left: 50px;
+}
+.seat-selector {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  // border: 1px solid #ccc;
+  border-radius: 8px;
+  // background-color: #f9f9f9;
+}
+.seat {
+  display: inline-flex; /* Sử dụng flexbox để căn chỉnh biểu tượng và chữ */
+  flex-direction: column; /* Xếp các phần tử theo chiều dọc */
+  align-items: center; /* Căn giữa theo chiều ngang */
+  justify-content: center; /* Căn giữa theo chiều dọc */
+  width: 50px; /* Điều chỉnh chiều rộng theo nhu cầu */
+  height: 50px; /* Điều chỉnh chiều cao theo nhu cầu */
+  border: 1px solid #ccc;
+  margin: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.9em;
+  position: relative; /* Đảm bảo phần tử con có vị trí tương đối */
+}
+
+.available {
+  background-color: #5fe295; /* Màu cho ghế có sẵn */
+}
+
+.reserved {
+  background-color: #d65012; /* Màu cho ghế đã đặt trước */
+}
+
+.selected {
+  background-color: #bee5eb; /* Màu cho ghế đã chọn */
+}
+
+.confirmation-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.confirmation-container h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.confirmation-container p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.confirmation-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.confirmation-container li {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.confirmation-container button {
+  background-color: #4caf50; /* Màu nền */
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  outline: none; /* Loại bỏ border xung quanh khi focus */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Bóng đổ */
+  overflow: hidden; /* Ẩn các yếu tố vượt ra ngoài nút */
+  position: relative; /* Để dễ dàng xử lý vị trí của các phần tử bên trong */
+  animation: jump 1s infinite alternate; /* Áp dụng animation với tên là jump */
+  transition: all 0.3s ease;
+}
+
+.confirmation-container button:hover {
+  background-color: #0056b3;
+}
+
+
+
+.date-time {
+  margin-left: 50px;
+}
+.date-selector button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  margin: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.date-selector button:hover {
+  background-color: #e0e0e0;
+}
+
+.date-selector button:active {
+  transform: scale(0.95);
+}
+
+.navigation button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 4px 8px;
+  margin: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.navigation button:hover {
+  background-color: #e0e0e0;
+}
+
+.navigation button:active {
+  transform: scale(0.95);
+}
+
+.time-slot-selector button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  margin: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.time-slot-selector button:hover {
+  background-color: #e0e0e0;
+}
+
+.time-slot-selector button:active {
+  transform: scale(0.95);
+}
+
+
+h1{
+  text-align: center;
+}
+
