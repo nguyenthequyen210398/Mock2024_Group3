@@ -1,6 +1,8 @@
 package group3.book_movie_tickets_backend.service;
 
 import group3.book_movie_tickets_backend.dto.SeatDto;
+import group3.book_movie_tickets_backend.form.SeatFilterForm;
+import group3.book_movie_tickets_backend.form.SeatTypeFilterForm;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 
@@ -9,7 +11,7 @@ public interface ISeatService {
     void create(SeatDto form);
 
 
-    Page<SeatDto> getAll(int pageNo, int pageSize, String sortBy, String sortDir);
+    Page<SeatDto> getAll( int pageNo, int pageSize, String sortBy, String sortDir);
 
     SeatDto getById(Integer id);
 

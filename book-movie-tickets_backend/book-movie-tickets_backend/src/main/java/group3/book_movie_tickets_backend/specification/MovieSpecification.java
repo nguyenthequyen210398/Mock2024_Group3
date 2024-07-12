@@ -22,9 +22,9 @@ public class MovieSpecification {
 
             if (StringUtils.hasText(form.getSearch())) {
                 String pattern = "%" + form.getSearch().trim() + "%";
-                Path<String> fullName = root.get("fullName");
-                Predicate hasFullNameLike = builder.like(fullName, pattern);
-                Path<String> address = root.get("address");
+                Path<String> name = root.get("name");
+                Predicate hasFullNameLike = builder.like(name, pattern);
+                Path<String> address = root.get("name");
                 Predicate hasAddressLike = builder.like(address, pattern);
 
                 predicates.add(builder.or(hasFullNameLike, hasAddressLike));

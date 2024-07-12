@@ -20,6 +20,8 @@ public class Account implements UserDetails {
     private String email;
     @Column
     private String password;
+    @Column
+    private String fullname;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -57,6 +59,12 @@ public class Account implements UserDetails {
     @OneToOne
     @JoinColumn(name = "userdetail_id", referencedColumnName = "id")
     private UserDetail userDetail;
-//    @Column
-//    private Role role ;
+
+    @Column(name = "role", nullable = true)
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
+
+    public enum Role {
+        ADMIN, STAFF, CUSTOMER
+    }
 }
