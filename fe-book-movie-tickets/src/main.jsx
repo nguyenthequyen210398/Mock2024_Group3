@@ -15,6 +15,7 @@ import MovieManagement from "./pages/movie/MovieManagement.jsx";
 import App from './App.jsx'
 import MovieDetails from './pages/movie/MovieDetails.jsx'
 import TicketPurchase from './pages/ticket/TicketPurchase.jsx'
+import AdminLayout from "./layouts/admin_layouts/AdminLayout.jsx";
 
 const router = createBrowserRouter([
 
@@ -76,10 +77,17 @@ const router = createBrowserRouter([
     path: '/ticket-purchase/:id',
     element: <TicketPurchase />
   },
-
-
-
-
+  {
+    path:'/admin',
+    element: <AdminLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '/movie-management',
+        element: <MovieManagement />
+      },
+        ]
+  }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
