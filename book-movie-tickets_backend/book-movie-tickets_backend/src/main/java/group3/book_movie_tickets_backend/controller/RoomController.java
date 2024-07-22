@@ -38,7 +38,7 @@ public class RoomController {
 
 
     @PutMapping("/{id}")
-    public void update(@PathVariable("id") Integer id, @RequestBody @Valid MovieDto form) {
+    public void update(@PathVariable("id") Integer id, @RequestBody @Valid RoomDto form) {
         service.updateById(id, form);
     }
 

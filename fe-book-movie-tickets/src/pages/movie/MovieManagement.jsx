@@ -3,6 +3,7 @@ import {Button, Modal, Card, Dropdown, Nav} from 'react-bootstrap';
 import axios from 'axios';
 import Movie from '../../components/Movie.jsx';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import Sidebar from "../../layouts/admin_layouts/Sidebar.jsx";
 
 function MovieManagement() {
     const [movies, setMovies] = useState([]);
@@ -189,22 +190,23 @@ function MovieManagement() {
     return (
         <div className="mt-0">
             <div className="row mt-0">
-                <div className="col-2 p-2 d-flex flex-column vh-100">
-                    {/* Left Sidebar/Menu */}
-                    <Nav className="flex-column  p-3 shadow-sm rounded vh-100">
+                {/*<div className="col-2 p-2 d-flex flex-column vh-100">*/}
+                {/*    /!* Left Sidebar/Menu *!/*/}
+                {/*    <Nav className="flex-column  p-3 shadow-sm rounded vh-100">*/}
 
-                        <Nav.Link href="#" className="text-dark mb-2" onClick={() => console.log('Menu Item 1 clicked')}>
-                            <i className="bi bi-speedometer2 me-2"></i> Dashboard
-                        </Nav.Link>
-                        <Nav.Link href="/movie-management" className="text-dark mb-2" >
-                            <i className="bi bi-film me-2"></i> Movie
-                        </Nav.Link>
-                        <Nav.Link href="#" className="text-dark mb-2" onClick={() => console.log('Menu Item 3 clicked')}>
-                            <i className="bi bi-ticket me-2"></i> Ticket
-                        </Nav.Link>
-                        {/* Add more menu items as needed */}
-                    </Nav>
-                </div>
+                {/*        <Nav.Link href="#" className="text-dark mb-2" onClick={() => console.log('Menu Item 1 clicked')}>*/}
+                {/*            <i className="bi bi-speedometer2 me-2"></i> Dashboard*/}
+                {/*        </Nav.Link>*/}
+                {/*        <Nav.Link href="/movie-management" className="text-dark mb-2" >*/}
+                {/*            <i className="bi bi-film me-2"></i> Movie*/}
+                {/*        </Nav.Link>*/}
+                {/*        <Nav.Link href="#" className="text-dark mb-2" onClick={() => console.log('Menu Item 3 clicked')}>*/}
+                {/*            <i className="bi bi-ticket me-2"></i> Ticket*/}
+                {/*        </Nav.Link>*/}
+                {/*        /!* Add more menu items as needed *!/*/}
+                {/*    </Nav>*/}
+                {/*</div>*/}
+                {/*<Sidebar />*/}
 
                 <div className="col-10">
                     <Card className="col-10 mx-auto">

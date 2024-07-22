@@ -1,0 +1,23 @@
+/* Sidebar.css */
+
+/* Transition for hover effect */
+.transition-shadow {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #e9ecef; /* Light background on hover */
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
+.nav-link.active {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.1); /* Ensure shadow remains */
+}
+
+/* Optional: Scaling effect on click */
+.nav-link:active {
+    transform: scale(0.98);
+    transition: transform 0.2s ease;
+}

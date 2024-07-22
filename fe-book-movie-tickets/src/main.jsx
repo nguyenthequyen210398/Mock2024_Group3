@@ -40,10 +40,10 @@ const router = createBrowserRouter([
     path: '/ticket-management',
     element: <TicketMana />
   },
-  {
-    path: '/movie-management',
-    element: <MovieManagement />
-  },
+  // {
+  //   path: '/movie-management',
+  //   element: <MovieManagement />
+  // },
   {
     path: '/sign-in',
     element: <SignIn />
@@ -83,7 +83,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/movie-management',
+        path: 'movie-management',
         element: <MovieManagement />
       },
         ]

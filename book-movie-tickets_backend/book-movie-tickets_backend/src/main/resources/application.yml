@@ -22,7 +22,7 @@ spring:
   application:
     name: book-movie-tickets_backend
   datasource:
-    password: root
+    password: nambao12
     url: jdbc:mysql://localhost:3306/ticket_booking?createDatabaseIfNotExist=true
     username: root
   jpa:
