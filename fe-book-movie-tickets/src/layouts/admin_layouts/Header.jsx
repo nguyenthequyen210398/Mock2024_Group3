@@ -4,9 +4,14 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const Header = ({ onToggleSidebar }) => {
     const [searchVisible, setSearchVisible] = React.useState(false);
+    const [avatarMenuVisible, setAvatarMenuVisible] = React.useState(false);
 
     const toggleSearch = () => {
         setSearchVisible(!searchVisible);
+    };
+
+    const toggleAvatarMenu = () => {
+        setAvatarMenuVisible(!avatarMenuVisible);
     };
 
     return (
@@ -18,10 +23,14 @@ const Header = ({ onToggleSidebar }) => {
                         <i className="bi bi-list fs-4"></i>
                     </button>
 
+                    {/* Logo */}
+                    <a href="/" className="navbar-brand">
+                        <img src="https://images.glints.com/unsafe/1200x0/glints-dashboard.s3.amazonaws.com/company-logo/b173e402a85ce42c2bd2b6df8b5a173b.png" alt="Logo" style={{ height: '40px' }} />
+                    </a>
+
                     {/* Navbar Links */}
                     <div className="d-flex">
                         <a href="../../index3.html" className="nav-link">Home</a>
-                        <a href="quanlymonhoc.html" className="nav-link ms-3">Quản lý môn học</a>
                     </div>
                 </div>
 
@@ -81,10 +90,29 @@ const Header = ({ onToggleSidebar }) => {
                     </li>
 
                     {/* Control Sidebar Button */}
-                    <li className="nav-item">
+                    <li className="nav-item me-3">
                         <a className="nav-link" href="#" role="button">
                             <i className="bi bi-grid fs-4"></i>
                         </a>
+                    </li>
+
+                    {/* Avatar Dropdown Menu */}
+                    <li className="nav-item dropdown me-3">
+                        <a className="nav-link" href="#" role="button" onClick={toggleAvatarMenu}>
+                            <img
+                                src="https://via.placeholder.com/40"
+                                alt="Avatar"
+                                className="rounded-circle"
+                                style={{ height: '40px', width: '40px' }}
+                            />
+                        </a>
+                        {avatarMenuVisible && (
+                            <ul className="dropdown-menu dropdown-menu-end show">
+                                <li>
+                                    <button className="dropdown-item" onClick={() => alert('Logged out!')}>Logout</button>
+                                </li>
+                            </ul>
+                        )}
                     </li>
                 </ul>
             </div>

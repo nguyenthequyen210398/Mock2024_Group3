@@ -11,7 +11,7 @@ import org.springframework.data.domain.Page;
 public interface IMovieTypesService {
 
     @Transactional
-    void create(MoviesTypesCreateForm form);
+    public MoviesTypeDto create(MoviesTypesCreateForm form) ;
 
     Page<MoviesTypeDto> getAll(MovieTypesFilterForm form, int pageNo, int pageSize, String sortBy, String sortDir);
 

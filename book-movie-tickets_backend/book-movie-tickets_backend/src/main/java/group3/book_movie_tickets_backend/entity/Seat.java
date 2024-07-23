@@ -20,8 +20,10 @@ public class Seat {
 
     @Column
     private int col;
-    
-    @OneToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "type_id", referencedColumnName = "id")
     private SeatType type;
+
+    private int status ;
 }

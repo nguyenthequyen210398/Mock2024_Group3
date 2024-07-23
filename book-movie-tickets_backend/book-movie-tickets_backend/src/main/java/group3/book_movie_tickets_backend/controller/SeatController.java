@@ -1,6 +1,7 @@
 package group3.book_movie_tickets_backend.controller;
 
 import group3.book_movie_tickets_backend.dto.SeatDto;
+import group3.book_movie_tickets_backend.form.SeatCreateForm;
 import group3.book_movie_tickets_backend.service.ISeatService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +24,14 @@ public class SeatController {
         return list;
     }
 
+
     @GetMapping(value = "/{id}")
     public SeatDto findById(@PathVariable("id") Integer id) {
         return service.getById(id);
     }
 
     @PostMapping
-    public void create(@RequestBody @Valid SeatDto form) {
+    public void create(@RequestBody @Valid SeatCreateForm form) {
         service.create(form);
     }
 

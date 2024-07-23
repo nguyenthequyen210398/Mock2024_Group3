@@ -5,18 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdbbe72a-fc6b-4c96-a8c1-165a86d533f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/layouts/admin_layouts/Header.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layouts/admin_layouts/Sidebar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/logs/application.log.2024-07-22.0.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/form/SeatCreateForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/MovieTypeItem.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Dashboard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/account/AccountManagement.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/account/AccountManagement.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/movieType/MovieType.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/movieType/MovieType.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/room/RoomManagement.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/room/RoomManagement.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/seat/SeatManagement.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/seat/SeatManagement.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/seat/SeatTypesManagement.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/seat/SeatTypesManagement.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/logs/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/logs/application.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/controller/RoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/controller/RoomController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/logs/application.log.2024-07-01.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/configuration/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/controller/MovieTypesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/controller/MovieTypesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/controller/SeatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/controller/SeatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/controller/SeatTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/controller/SeatTypeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/dto/SeatDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/dto/SeatDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/entity/Seat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/entity/Seat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/entity/SeatType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/entity/SeatType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/form/AccountCreateForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/form/AccountCreateForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/service/IMovieTypesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/service/IMovieTypesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/service/ISeatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/service/ISeatService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/service/MovieTypesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/service/MovieTypesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/service/SeatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/service/SeatService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/service/SeatTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../book-movie-tickets_backend/book-movie-tickets_backend/src/main/java/group3/book_movie_tickets_backend/service/SeatTypeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/admin_layouts/AdminLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/admin_layouts/AdminLayout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/admin_layouts/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/admin_layouts/Header.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layouts/admin_layouts/Sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/admin_layouts/Sidebar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/movie/MovieManagement.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/movie/MovieManagement.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,21 +61,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "dev",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ast/Documents/Ast_Learn/VTI_Academy/Mockproject/Team3/fe-book-movie-tickets/src/pages/movieType&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/movieType" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -77,7 +104,8 @@
       <updated>1720451913781</updated>
       <workItem from="1720451915747" duration="464000" />
       <workItem from="1720454266386" duration="1375000" />
-      <workItem from="1721662960064" duration="2624000" />
+      <workItem from="1721662960064" duration="4280000" />
+      <workItem from="1721707166777" duration="10907000" />
     </task>
     <servers />
   </component>

@@ -7,6 +7,7 @@ import group3.book_movie_tickets_backend.service.IMovieTypesService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -34,8 +35,9 @@ private IMovieTypesService service;
     }
 
     @PostMapping
-    public void create(@RequestBody @Valid MoviesTypesCreateForm form) {
-        service.create(form);
+    public ResponseEntity<MoviesTypeDto> create(@RequestBody @Valid MoviesTypesCreateForm form) {
+        MoviesTypeDto moviesTypeDto = service.create(form);
+        return ResponseEntity.ok(moviesTypeDto);
     }
 
 
@@ -44,7 +46,7 @@ private IMovieTypesService service;
         service.updateById(id, form);
     }
 
-    @DeleteMapping("/deleteById/{id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id") Integer id) {
         service.deleteById(id);
     }

@@ -1,15 +1,14 @@
 package group3.book_movie_tickets_backend.dto;
 
-import group3.book_movie_tickets_backend.entity.Room;
-import group3.book_movie_tickets_backend.entity.SeatType;
+import lombok.Data;
 
+@Data
 public class SeatDto {
     private Integer id;
-
-    private Room room;
-
+    private Integer roomId; // Use camelCase for consistency
+    private int roomNumber;
     private String row;
-
     private int col;
-    private SeatType type;
+    private Integer typeId; // Use camelCase for consistency
+    private String typeName;
 }

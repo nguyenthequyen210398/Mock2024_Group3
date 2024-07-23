@@ -11,5 +11,5 @@ public class RoomDto {
 
     private int number;
 
-    private List<Seat> seat;
+    private List<Integer> seatIds;
 }

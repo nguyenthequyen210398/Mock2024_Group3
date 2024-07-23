@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,23 +36,32 @@ public class MovieTypesService implements IMovieTypesService {
 
     @Override
     @Transactional
-    public void create(MoviesTypesCreateForm form) {
+    public MoviesTypeDto create(MoviesTypesCreateForm form) {
         if (form == null) {
             throw new IllegalArgumentException("Form cannot be null");
         }
 
+        // Convert the form to MovieTypes entity
         MovieTypes movieTypes = mapper.map(form, MovieTypes.class);
         movieTypes.setMovieList(new ArrayList<>());
 
-        // Save movieTypes if not already present
-        if (repository.findByName(form.getName()) == null) {
-            repository.save(movieTypes);
+        // Check if the movie type already exists
+        MovieTypes existingMovieTypes = repository.findByName(form.getName());
+        if (existingMovieTypes != null) {
+            movieTypes = existingMovieTypes; // Update the existing entity
         } else {
-            movieTypes = repository.findByName(form.getName());
+            repository.save(movieTypes); // Save new entity
         }
 
-        if (!form.getMovieIdList().isEmpty()) {
-            for (Integer id : form.getMovieIdList()) {
+        // Get movie ID list and handle potential null
+        List<Integer> movieIdList = form.getMovieIdList();
+        if (movieIdList == null) {
+            movieIdList = new ArrayList<>();
+        }
+
+        // Process movie IDs and associate them with the movie type
+        if (!movieIdList.isEmpty()) {
+            for (Integer id : movieIdList) {
                 Optional<Movie> movie = movieRepository.findById(id);
                 if (movie.isPresent()) {
                     movieTypes.getMovieList().add(movie.get());
@@ -59,11 +69,17 @@ public class MovieTypesService implements IMovieTypesService {
                     movieRepository.save(movie.get());
                 }
             }
+        } else {
+            movieTypes.setMovieList(new ArrayList<>()); // Ensure an empty list is set
         }
 
-        repository.save(movieTypes);
-    }
+        // Save the movie type with updated movie list
+        movieTypes = repository.save(movieTypes);
 
+        // Convert to DTO
+        MoviesTypeDto moviesTypeDto = mapper.map(movieTypes, MoviesTypeDto.class);
+        return moviesTypeDto;
+    }
 
     @Override
     public Page<MoviesTypeDto> getAll(MovieTypesFilterForm form, int pageNo, int pageSize, String sortBy, String sortDir) {
