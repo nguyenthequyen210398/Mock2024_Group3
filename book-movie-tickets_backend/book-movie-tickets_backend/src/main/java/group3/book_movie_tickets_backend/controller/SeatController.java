@@ -38,6 +38,10 @@ public class SeatController {
     public void update(@PathVariable("id") Integer id, @RequestBody @Valid SeatDto form) {
         service.updateById(id, form);
     }
+    @PutMapping("/updateStatus")
+    public String update(@RequestBody SeatDto form) {
+       return service.updateStatus(form);
+    }
 
     @DeleteMapping("/deleteById/{id}")
     public void deleteById(@PathVariable("id") Integer id) {
